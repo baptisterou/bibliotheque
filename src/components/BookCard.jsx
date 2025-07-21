@@ -1,18 +1,19 @@
 import React from 'react'
+import { NavLink, Link } from 'react-router-dom'
 
 function BookCard(props) {
   return (
     <div className='col-3 d-flex flex-column align-items-center mt-5 p-5 rounded bg-white'>
       <div className="card" style={{width: '18rem'}}>
-        <img src={props.src} className="card-img-top img-fluid" alt={props.titre} style={{maxHeight : '200px', objectFit: 'contain'}}/>
+        <img src={props.src} className="card-img-top img-fluid mt-1" alt={props.titre} style={{maxHeight : '200px', objectFit: 'contain'}}/>
         <div className="card-body">
         <h5 className="card-title">{props.titre}</h5>
-        <h5 className="card-title">{props.auteur}</h5>
-        <h5 className="card-title">{props.genre}</h5>
-        <h5 className="card-title">{props.date}</h5>
+        <h6 className="card-title">{props.auteur}</h6>
+        <h6 className="card-title">{props.genre}</h6>
+        <h6 className="card-title">{props.date}</h6>
         <p className="card-text">{props.resume}</p>
           <div className='d-flex justify-content-around flex-wrap'>
-          <a href="#" className='btn btn-primary px-3 my-1'>Modifier</a>
+          <Link to='/edit' className='btn btn-primary px-3 my-1'>Modifier</Link>
           <a href="#" className='btn btn-danger px-3 my-1'>Supprimer</a>
         </div>
         </div>

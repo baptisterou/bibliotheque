@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 
 function Header() {
@@ -7,8 +8,8 @@ function Header() {
       <div className='bg-primary bg-gradient text-white py-5 '>
         <h1 className='mb-3 ms-5'>Bibliothèque</h1>
         <nav className='d-flex list-unstyled '>
-          {/* <Link to='/' className='me-3 mb-3'>Accueil</Link>
-          <Link to='/addBook' className='fw-bold text-reset text-decoration-none'>Ajouter un livre</Link> */}
+          <NavLink to='/' className='mx-5 mb-3 fw-bold text-reset text-decoration-none'>Accueil</NavLink>
+          <NavLink to='/addBook' className='fw-bold text-reset text-decoration-none'>Ajouter un livre</NavLink>
         </nav>
       </div>
       <div className='bg-light py-5'>
