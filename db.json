@@ -1,34 +1,34 @@
 {
   "books": [
     {
-      "id": 1,
+      "id": "1",
       "titre": "Le Comte de Monte-Cristo",
       "auteur": "Alexandre Dumas",
       "genre": "Roman historique",
       "date": "1845-08-28",
-      "resume": "Un classique de la littérature française qui raconte l'histoire d'Edmond Dantès, injustement emprisonné, qui s'échappe et se venge méthodiquement de ceux qui l'ont trahi.",
-      "couverture": "Monte_Cristo.webp"
+      "couverture": "Monte_Cristo.webp",
+      "resume": "Un classique de la littérature française qui raconte l'histoire d'Edmond Dantès, injustement emprisonné, qui s'échappe et se venge méthodiquement de ceux qui l'ont trahi."
     },
     {
-      "id": 2,
+      "id": "2",
       "titre": "1984",
       "auteur": "George Orwell",
       "genre": "Dystopie",
       "date": "1949-06-08",
-      "resume": "Une vision cauchemardesque d'un futur totalitaire où la liberté de pensée est supprimée et où le gouvernement surveille chaque aspect de la vie des citoyens.",
-      "couverture": "https://m.media-amazon.com/images/I/71kxa1-0mfL._AC_UF1000,1000_QL80_.jpg"
+      "couverture": "https://m.media-amazon.com/images/I/71kxa1-0mfL._AC_UF1000,1000_QL80_.jpg",
+      "resume": "Une vision cauchemardesque d'un futur totalitaire où la liberté de pensée est supprimée et où le gouvernement surveille chaque aspect de la vie des citoyens."
     },
     {
-      "id": 3,
+      "id": "3",
       "titre": "Le Seigneur des Anneaux",
       "auteur": "J.R.R. Tolkien",
       "genre": "Fantasy",
       "date": "1954-07-29",
-      "resume": "Une épopée fantastique qui suit la quête d'un groupe pour détruire un anneau de pouvoir maléfique et sauver la Terre du Milieu des ténèbres.",
-      "couverture": "https://m.media-amazon.com/images/I/71ZLavBjpRL._AC_UF1000,1000_QL80_.jpg"
+      "couverture": "https://m.media-amazon.com/images/I/71ZLavBjpRL._AC_UF1000,1000_QL80_.jpg",
+      "resume": "Une épopée fantastique qui suit la quête d'un groupe pour détruire un anneau de pouvoir maléfique et sauver la Terre du Milieu des ténèbres."
     },
     {
-      "id": 4,
+      "id": "4",
       "titre": "Orgueil et Préjugés",
       "auteur": "Jane Austen",
       "genre": "Roman classique",
@@ -37,7 +37,7 @@
       "couverture": "https://m.media-amazon.com/images/I/71Q1tPupKjL._AC_UF1000,1000_QL80_.jpg"
     },
     {
-      "id": 5,
+      "id": "5",
       "titre": "Le Petit Prince",
       "auteur": "Antoine de Saint-Exupéry",
       "genre": "Conte philosophique",
@@ -46,7 +46,7 @@
       "couverture": "Le_Petit_Prince.webp"
     },
     {
-      "id": 6,
+      "id": "6",
       "titre": "Harry Potter à l'école des sorciers",
       "auteur": "J.K. Rowling",
       "genre": "Fantasy",
@@ -55,7 +55,7 @@
       "couverture": "https://m.media-amazon.com/images/I/71-++hbbERL._AC_UF1000,1000_QL80_.jpg"
     },
     {
-      "id": 7,
+      "id": "7",
       "titre": "Le Vieil Homme et la Mer",
       "auteur": "Ernest Hemingway",
       "genre": "Roman",
@@ -64,7 +64,7 @@
       "couverture": "Le_Vieil_Homme_et_la_Mer.webp"
     },
     {
-      "id": 8,
+      "id": "8",
       "titre": "Crime et Châtiment",
       "auteur": "Fiodor Dostoïevski",
       "genre": "Roman psychologique",
@@ -73,7 +73,7 @@
       "couverture": "Crime_et_Châtiment.webp"
     },
     {
-      "id": 9,
+      "id": "9",
       "titre": "L'Étranger",
       "auteur": "Albert Camus",
       "genre": "Philosophique",
@@ -82,7 +82,7 @@
       "couverture": "L'Etranger.webp"
     },
     {
-      "id": 10,
+      "id": "10",
       "titre": "Cent ans de solitude",
       "auteur": "Gabriel García Márquez",
       "genre": "Réalisme magique",
@@ -91,22 +91,40 @@
       "couverture": "https://m.media-amazon.com/images/I/81MI6+TpYkL._AC_UF1000,1000_QL80_.jpg"
     },
     {
-      "id": 11,
+      "id": "11",
       "titre": "Les Misérables",
       "auteur": "Victor Hugo",
       "genre": "Roman historique",
       "date": "1862-01-01",
-      "resume": "Une vaste fresque sociale qui suit plusieurs personnages dans la France du XIXe siècle, notamment l'ancien forçat Jean Valjean.",
-      "couverture": "Les_Misérables.webp"
+      "couverture": "Les_Misérables.webp",
+      "resume": "Une vaste fresque sociale qui suit plusieurs personnages dans la France du XIXe siècle, notamment l'ancien forçat Jean Valjean."
     },
     {
-      "id": 12,
+      "id": "12",
       "titre": "Voyage au bout de la nuit",
       "auteur": "Louis-Ferdinand Céline",
       "genre": "Roman",
       "date": "1932-01-01",
       "resume": "Un roman sombre et cynique qui suit les errances de Ferdinand Bardamu à travers différents pays et situations.",
       "couverture": "Voyage_au_bout_de_la_nuit.jpg"
+    },
+    {
+      "id": "3d97",
+      "titre": "La poubelle des vanités",
+      "auteur": "Corentin Vialle",
+      "genre": "Fiction psychologique",
+      "date": "2020-10-22",
+      "couverture": "https://servimg.eyrolles.com/static/media/7461/9791026267461_internet_w290.jpg",
+      "resume": "Dans la poubelle des vanités, il n'y a pas encore le tri sélectif. On y retrouve tous types d'ambitieux et de cupides. À ne jamais dire merci, on termine souvent son existence en demandant pardon."
+    },
+    {
+      "id": "8080",
+      "titre": "Vous dansez madame ?",
+      "auteur": "Corentin Vialle",
+      "genre": "Fiction psychologique",
+      "date": "2019-04-07",
+      "couverture": "https://servimg.eyrolles.com/static/media/2384/9791026232384_internet_w290.jpg",
+      "resume": "Anne et Xavier forment un couple à la parole impeccable, leur vie est sur des rails. Comment et pourquoi le ciel s'est-il soudain assombri et pourquoi leurs existences vont-elles irréversiblement basculer ? Le harcèlement et les a priori médiocres se nourrissent essentiellement des différences. Ils n'ont pas attendu l'arrivée d'internet pour ravager des vies. Les réseaux sociaux ont juste inventé la solitude collective... "
     }
   ]
 }
