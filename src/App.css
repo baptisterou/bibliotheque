@@ -1,0 +1,538 @@
+/* Favori : effet de clic (scale) */
+.favorite-star:active {
+  transform: scale(0.85) rotate(-10deg);
+  filter: brightness(1.2);
+}
+
+/* Favori : effet de survol (déjà existant, on améliore) */
+.favorite-star:hover {
+  box-shadow: 0 0 8px #ffc10799, 0 2px 8px #0001;
+  filter: brightness(1.1) drop-shadow(0 0 4px #ffc10766);
+}
+/* --- Styles personnalisés pour les cards et scrollbars --- */
+.card {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-body {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.book-resume-scroll {
+  overflow: auto;
+  max-height: 120px;
+  min-height: 60px;
+  margin-bottom: 0.5rem;
+  padding-right: 8px;
+  word-break: break-word;
+  background: rgba(0,0,0,0.01);
+  border-radius: 6px;
+}
+
+/* Scrollbar stylisée (Chrome, Edge, Safari) */
+.book-resume-scroll::-webkit-scrollbar {
+  width: 8px;
+  background: #f1f1f1;
+  border-radius: 6px;
+}
+.book-resume-scroll::-webkit-scrollbar-thumb {
+  background: #bdbdbd;
+  border-radius: 6px;
+}
+.book-resume-scroll::-webkit-scrollbar-thumb:hover {
+  background: #888;
+}
+
+/* Scrollbar stylisée (Firefox) */
+.book-resume-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #bdbdbd #f1f1f1;
+}
+
+/* Empêcher le dépassement des boutons */
+.card .btn, .card .btn-primary, .card .btn-danger {
+  max-width: 100%;
+  word-break: break-word;
+  white-space: normal;
+  overflow: hidden;
+}
+/* Thème clair (par défaut) */
+.light-theme {
+  background-color: #f8f9fa;
+  color: #212529;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* === MODE SOMBRE - STYLES COHÉRENTS === */
+
+/* Thème principal */
+.dark-theme {
+  background-color: #121212;
+  color: #e0e0e0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Cartes */
+.dark-theme .card {
+  background-color: #1e1e1e;
+  border-color: #333333;
+  color: #e0e0e0;
+}
+
+.dark-theme .card-title,
+.dark-theme .card-text {
+  color: #e0e0e0;
+}
+
+/* Formulaires */
+.dark-theme input,
+.dark-theme textarea,
+.dark-theme select {
+  background-color: #2d2d2d;
+  border-color: #404040;
+  color: #e0e0e0;
+}
+
+.dark-theme input:focus,
+.dark-theme textarea:focus,
+.dark-theme select:focus {
+  background-color: #2d2d2d;
+  border-color: #ffc107;
+  color: #e0e0e0;
+  box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.25);
+}
+
+.dark-theme label {
+  color: #e0e0e0;
+}
+
+/* Pagination */
+.dark-theme .pagination .page-link {
+  background-color: #1e1e1e;
+  border-color: #333333;
+  color: #e0e0e0;
+}
+
+.dark-theme .pagination .page-link:hover {
+  background-color: #2d2d2d;
+  border-color: #404040;
+  color: #e0e0e0;
+}
+
+.dark-theme .pagination .page-item.active .page-link {
+  background-color: #ffc107;
+  border-color: #ffc107;
+  color: #000;
+}
+
+.dark-theme .pagination .page-item.disabled .page-link {
+  background-color: #1e1e1e;
+  border-color: #333333;
+  color: #666666;
+}
+
+/* Navigation */
+.dark-theme .navbar {
+  background-color: #1e1e1e !important;
+  border-bottom: 1px solid #333333;
+}
+
+.dark-theme .navbar-brand,
+.dark-theme .navbar-nav .nav-link {
+  color: #e0e0e0 !important;
+}
+
+.dark-theme .navbar-nav .nav-link:hover {
+  color: #ffc107 !important;
+}
+
+/* Header spécifique */
+.dark-theme .header,
+.dark-theme header {
+  background-color: #1e1e1e !important;
+  border-bottom: 1px solid #333333;
+}
+
+.dark-theme .header *,
+.dark-theme header * {
+  color: #e0e0e0;
+}
+
+.dark-theme .header .btn,
+.dark-theme header .btn {
+  border-color: #404040;
+}
+
+.dark-theme .header .form-control,
+.dark-theme header .form-control,
+.dark-theme .header .form-select,
+.dark-theme header .form-select {
+  background-color: #2d2d2d;
+  border-color: #404040;
+  color: #e0e0e0;
+}
+
+/* Override du style inline du header */
+.dark-theme [style*="backgroundColor"] {
+  background-color: #1e1e1e !important;
+}
+
+.dark-theme .text-white {
+  color: #e0e0e0 !important;
+}
+
+/* Boutons */
+.dark-theme .btn-outline-secondary {
+  color: #e0e0e0;
+  border-color: #666666;
+}
+
+.dark-theme .btn-outline-secondary:hover {
+  background-color: #666666;
+  border-color: #666666;
+  color: #fff;
+}
+
+.dark-theme .btn-primary {
+  background-color: #ffc107;
+  border-color: #ffc107;
+  color: #000;
+}
+
+.dark-theme .btn-primary:hover {
+  background-color: #e0a800;
+  border-color: #e0a800;
+  color: #000;
+}
+
+.dark-theme .btn-danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.dark-theme .btn-danger:hover {
+  background-color: #c82333;
+  border-color: #c82333;
+}
+
+/* Textes */
+.dark-theme .text-muted {
+  color: #999999 !important;
+}
+
+/* Transition douce pour tous les éléments */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+
+/* Styles généraux pour les thèmes */
+
+/* Styles pour le filtre checkbox des favoris - version propre */
+.favorite-filter-container {
+  position: relative;
+  display: inline-block;
+}
+
+.favorite-filter-checkbox {
+  opacity: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.favorite-filter-label {
+  display: block;
+  width: 50px;
+  height: 50px;
+  background: #f8f9fa;
+  border: 2px solid #dee2e6;
+  border-radius: 10px;
+  cursor: pointer;
+  position: relative;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.favorite-filter-label:hover {
+  border-color: #ffc107;
+}
+
+.favorite-filter-star {
+  font-size: 20px;
+  transition: opacity 0.2s ease;
+  opacity: 0.5;
+  color: #6c757d;
+}
+
+.favorite-filter-checkbox:checked + .favorite-filter-label {
+  background: #fff3cd;
+  border-color: #ffc107;
+}
+
+.favorite-filter-checkbox:checked + .favorite-filter-label .favorite-filter-star {
+  opacity: 1;
+  color: #ffc107;
+}
+
+/* Mode sombre pour le filtre des favoris */
+.dark-theme .favorite-filter-label {
+  background: #343a40;
+  border-color: #495057;
+}
+
+.dark-theme .favorite-filter-label:hover {
+  border-color: #ffc107;
+}
+
+.dark-theme .favorite-filter-star {
+  color: #6c757d;
+}
+
+.dark-theme .favorite-filter-checkbox:checked + .favorite-filter-label {
+  background: #654321;
+  border-color: #ffc107;
+}
+
+.dark-theme .favorite-filter-checkbox:checked + .favorite-filter-label .favorite-filter-star {
+  color: #ffc107;
+}
+
+/* Styles pour le bouton de changement de thème - Toggle Switch */
+.theme-toggle-container {
+  position: relative;
+  display: inline-block;
+}
+
+.theme-toggle-checkbox {
+  opacity: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.theme-toggle-label {
+  display: block;
+  width: 70px;
+  height: 35px;
+  background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+  border-radius: 25px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+  box-shadow: 
+    0 4px 8px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.theme-toggle-label:hover {
+  transform: translateY(-1px);
+  box-shadow: 
+    0 6px 12px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.theme-toggle-slider {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 29px;
+  height: 29px;
+  background: white;
+  border-radius: 50%;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 
+    0 2px 6px rgba(0, 0, 0, 0.2),
+    0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.theme-toggle-icon {
+  font-size: 14px;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+}
+
+/* Quand le toggle est activé (mode sombre) */
+.theme-toggle-checkbox:checked + .theme-toggle-label {
+  background: linear-gradient(135deg, #2d3436 0%, #636e72 100%);
+}
+
+.theme-toggle-checkbox:checked + .theme-toggle-label .theme-toggle-slider {
+  transform: translateX(35px);
+  background: linear-gradient(135deg, #2d3436 0%, #636e72 100%);
+  color: white;
+}
+
+.theme-toggle-checkbox:checked + .theme-toggle-label .theme-toggle-icon {
+  color: #ffeaa7;
+}
+
+/* Animation de rotation pour l'icône */
+.theme-toggle-checkbox:checked + .theme-toggle-label .theme-toggle-slider .theme-toggle-icon {
+  transform: rotate(360deg);
+}
+
+/* Effet de focus pour l'accessibilité */
+.theme-toggle-checkbox:focus + .theme-toggle-label {
+  outline: 2px solid #74b9ff;
+  outline-offset: 2px;
+}
+
+/* Animation de pulsation au hover */
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 
+      0 6px 12px rgba(0, 0, 0, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+  50% {
+    box-shadow: 
+      0 6px 20px rgba(116, 185, 255, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+}
+
+.theme-toggle-label:hover {
+  animation: glow 2s ease-in-out infinite;
+}
+
+/* Mode sombre - ajustement des couleurs du toggle */
+.dark-theme .theme-toggle-checkbox:not(:checked) + .theme-toggle-label {
+  background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+}
+
+.dark-theme .theme-toggle-checkbox:not(:checked) + .theme-toggle-label .theme-toggle-slider {
+  background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+}
+
+.dark-theme .theme-toggle-checkbox:not(:checked) + .theme-toggle-label .theme-toggle-icon {
+  color: white;
+}
+
+/* Nettoyage - suppression des duplications */
+
+/* Suppression des duplications finales */
+
+/* Styles pour le système de favoris */
+.favorite-star {
+  border: none;
+  background: none;
+  font-size: 1.5rem;
+  color: #978e8e;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.favorite-star:hover {
+  color: #ffc107;
+  transform: scale(1.1);
+  background-color: rgba(255, 193, 7, 0.1);
+}
+
+.favorite-star-active {
+  color: #ffc107;
+  text-shadow: 0 0 8px rgba(255, 193, 7, 0.5);
+}
+
+.favorite-star-active:hover {
+  color: #ff8c00;
+  transform: scale(1.2);
+}
+
+/* Styles pour le filtre favoris */
+.favorite-filter-container {
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
+}
+
+.favorite-filter-checkbox {
+  display: none;
+}
+
+.favorite-filter-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 20px;
+  background-color: #f8f9fa;
+  border: 2px solid #e9ecef;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #495057;
+}
+
+.favorite-filter-label:hover {
+  background-color: #e9ecef;
+  border-color: #ffc107;
+}
+
+.favorite-filter-star {
+  margin-right: 5px;
+  font-size: 1.1rem;
+  color: #ddd;
+  transition: color 0.2s ease;
+}
+
+.favorite-filter-checkbox:checked + .favorite-filter-label {
+  background-color: #fff3cd;
+  border-color: #ffc107;
+  color: #856404;
+}
+
+.favorite-filter-checkbox:checked + .favorite-filter-label .favorite-filter-star {
+  color: #ffc107;
+}
+
+/* Dark theme pour les favoris */
+.dark-theme .favorite-star {
+  color: #ffffff;
+}
+
+.dark-theme .favorite-star:hover {
+  color: #ffc107;
+  background-color: rgba(255, 193, 7, 0.15);
+}
+
+
+
+.dark-theme .favorite-filter-label {
+  background-color: #495057;
+  border-color: #6c757d;
+  color: #f8f9fa;
+}
+
+.dark-theme .favorite-filter-label:hover {
+  background-color: #6c757d;
+  border-color: #ffc107;
+}
+
+.dark-theme .favorite-filter-star {
+  color: #666;
+}
+
+.dark-theme .favorite-filter-checkbox:checked + .favorite-filter-label {
+  background-color: #664d03;
+  border-color: #ffc107;
+  color: #fff3cd;
+}

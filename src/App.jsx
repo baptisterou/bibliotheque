@@ -1,3 +1,4 @@
+// Imports de tous les composants et hooks nécessaires
 import React from 'react'
 import './App.css'
 import Header from './components/Header'
@@ -7,38 +8,84 @@ import { Route, Routes } from 'react-router-dom'
 import AddBook from './pages/AddBook'
 import BookList from './pages/BookList'
 import FilterBar from './components/FilterBar'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
+import { useTheme } from './contexts/ThemeContext'
 
+// Composant principal de l'application
 function App() {
+  // Récupération du thème depuis le contexte
+  const { isDarkMode } = useTheme();
 
+  // États pour gérer tous les filtres
   const[genre, setSelectedGenre] = useState('')
   const[year, setSelectedYear] = useState('');
   const[input, setInput] = useState('')
+  const[isFavoriFilter, setIsFavoriFilter] = useState(false)
 
-  function onGenreChange(genreCB){
+  // Fonctions callback pour éviter les re-rendus inutiles
+  const onGenreChange = useCallback((genreCB) => {
     setSelectedGenre(genreCB)
-  }
+  }, []);
 
-  function onYearChange(yearCB){
+  const onYearChange = useCallback((yearCB) => {
     setSelectedYear(yearCB);
-  }
+  }, []);
 
-  function onInputChange(inputCB){
+  const onInputChange = useCallback((inputCB) => {
     setInput(inputCB)
-  }
+  }, []);
 
-  function deleteEntry(idBook){
+  const onFavoriFilterChange = useCallback((favoriCB) => {
+    setIsFavoriFilter(favoriCB)
+  }, []);
+
+  // Fonction pour basculer les favoris avec mise à jour optimiste
+  const toggleFavori = useCallback((idBook) => {
+    // Mise à jour optimiste locale sans re-render - utilise useCallback pour stabilité
+    setBooks(prevBooks => {
+      const bookToUpdate = prevBooks.find(book => book.id === idBook);
+      if (bookToUpdate) {
+        const updatedBook = { ...bookToUpdate, isFavori: !bookToUpdate.isFavori };
+        
+        // Mise à jour en arrière-plan sur le serveur
+        fetch(`http://localhost:3001/books/${idBook}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(updatedBook)
+        })
+        .catch(error => {
+          console.error('Erreur lors de la mise à jour des favoris:', error);
+          // En cas d'erreur, annuler la mise à jour optimiste
+          setBooks(prevBooksRollback => 
+            prevBooksRollback.map(book => 
+              book.id === idBook ? { ...book, isFavori: !book.isFavori } : book
+            )
+          );
+        });
+      }
+      
+      return prevBooks.map(book => 
+        book.id === idBook ? { ...book, isFavori: !book.isFavori } : book
+      );
+    });
+  }, []);
+
+  // Fonction pour supprimer un livre avec confirmation
+  const deleteEntry = useCallback((idBook) => {
       if(window.confirm('Voulez vous vraiment supprimer ce livre? ATTENTION CETTE OPERATION EST IRREVERSIBLE')){
         fetch(`http://localhost:3001/books/${idBook}`, {
           method: 'DELETE'
         })
       .then(()=>{
-        setBooks(books.filter(book => book.id !== idBook))
+        setBooks(prevBooks => prevBooks.filter(book => book.id !== idBook))
       })
       }
-  }
+  }, []);
 
-  function updateBook(idBook, updatedBook){
+  // Fonction pour mettre à jour un livre existant
+  const updateBook = useCallback((idBook, updatedBook) => {
     fetch(`http://localhost:3001/books/${idBook}`, {
       method: 'PUT',
       headers: {
@@ -48,16 +95,17 @@ function App() {
     })
     .then(response => response.json())
     .then(updatedBookData => {
-      setBooks(books.map(book => 
+      setBooks(prevBooks => prevBooks.map(book => 
         book.id === idBook ? updatedBookData : book
       ));
     })
     .catch(error => {
       console.error('Erreur lors de la mise à jour:', error);
     });
-  }
-// fetch ajout nouveau livre
-  function newBook(book){
+  }, []);
+  
+  // Fonction pour ajouter un nouveau livre
+  const newBook = useCallback((book) => {
         fetch(`http://localhost:3001/books/`, {
       method: 'POST',
       headers: {
@@ -67,16 +115,17 @@ function App() {
     })
     .then(response => response.json())
     .then(newBookData => {
-      setBooks([...books, newBookData]);
+      setBooks(prevBooks => [...prevBooks, newBookData]);
     })
     .catch(error => {
       console.error('Erreur lors de l\'ajout:', error);
     });
-  }
+  }, []);
 
-
+  // État pour stocker tous les livres
   const [books, setBooks] = useState([]);
 
+  // Effet pour charger les livres au démarrage de l'app
   useEffect(()=>{
     fetch('http://localhost:3001/books')
     .then(response => response.json())
@@ -84,12 +133,14 @@ function App() {
   },[])
 
   return (
-    <div className='bg-light'>
-      <Header className='mt-0' books={books} onGenreChange={onGenreChange} onYearChange={onYearChange} onInputChange={onInputChange} genre={genre} year={year} input={input}></Header>
+    <div className={isDarkMode ? 'dark-theme' : 'light-theme'} style={{minHeight: '100vh'}}>
+      {/* Header avec navigation et filtres */}
+      <Header className='mt-0 ' books={books} onGenreChange={onGenreChange} onYearChange={onYearChange} onInputChange={onInputChange} onFavoriFilterChange={onFavoriFilterChange} genre={genre} year={year} input={input} isFavoriFilter={isFavoriFilter}></Header>
+      {/* Routes pour naviguer entre les pages */}
       <Routes>
-        <Route path='/' element={<BookList  books={books} genre={genre} year={year} input={input} deleteEntry={deleteEntry}/>}/>
-        <Route path='/addBook' element={<AddBook newBook={newBook}/>}/>
-        <Route path='/edit/:id' element={<EditBook books={books} updateBook={updateBook}/>}/>
+        <Route className='' path='/' element={<BookList  books={books} genre={genre} year={year} input={input} isFavoriFilter={isFavoriFilter} deleteEntry={deleteEntry} toggleFavori={toggleFavori}/>}/>
+        <Route className='' path='/addBook' element={<AddBook newBook={newBook}/>}/>
+        <Route className='' path='/edit/:id' element={<EditBook books={books} updateBook={updateBook}/>}/>
       </Routes>
     </div>
   )

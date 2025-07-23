@@ -7,7 +7,8 @@
       "genre": "Roman historique",
       "date": "1845-08-28",
       "couverture": "Monte_Cristo.webp",
-      "resume": "Un classique de la littérature française qui raconte l'histoire d'Edmond Dantès, injustement emprisonné, qui s'échappe et se venge méthodiquement de ceux qui l'ont trahi."
+      "resume": "Un classique de la littérature française qui raconte l'histoire d'Edmond Dantès, injustement emprisonné, qui s'échappe et se venge méthodiquement de ceux qui l'ont trahi.",
+      "isFavori": false
     },
     {
       "id": "2",
@@ -16,7 +17,8 @@
       "genre": "Dystopie",
       "date": "1949-06-08",
       "couverture": "https://m.media-amazon.com/images/I/71kxa1-0mfL._AC_UF1000,1000_QL80_.jpg",
-      "resume": "Une vision cauchemardesque d'un futur totalitaire où la liberté de pensée est supprimée et où le gouvernement surveille chaque aspect de la vie des citoyens."
+      "resume": "Une vision cauchemardesque d'un futur totalitaire où la liberté de pensée est supprimée et où le gouvernement surveille chaque aspect de la vie des citoyens.",
+      "isFavori": false
     },
     {
       "id": "3",
@@ -25,7 +27,8 @@
       "genre": "Fantasy",
       "date": "1954-07-29",
       "couverture": "https://m.media-amazon.com/images/I/71ZLavBjpRL._AC_UF1000,1000_QL80_.jpg",
-      "resume": "Une épopée fantastique qui suit la quête d'un groupe pour détruire un anneau de pouvoir maléfique et sauver la Terre du Milieu des ténèbres."
+      "resume": "Une épopée fantastique qui suit la quête d'un groupe pour détruire un anneau de pouvoir maléfique et sauver la Terre du Milieu des ténèbres.",
+      "isFavori": false
     },
     {
       "id": "4",
@@ -34,7 +37,8 @@
       "genre": "Roman classique",
       "date": "1813-01-28",
       "resume": "Une histoire d'amour et de malentendus entre Elizabeth Bennet, une jeune femme intelligente et indépendante, et Mr. Darcy, un riche aristocrate.",
-      "couverture": "https://m.media-amazon.com/images/I/71Q1tPupKjL._AC_UF1000,1000_QL80_.jpg"
+      "couverture": "https://m.media-amazon.com/images/I/71Q1tPupKjL._AC_UF1000,1000_QL80_.jpg",
+      "isFavori": false
     },
     {
       "id": "5",
@@ -52,7 +56,8 @@
       "genre": "Fantasy",
       "date": "1997-06-26",
       "resume": "Le premier livre de la série Harry Potter qui suit les aventures d'un jeune sorcier découvrant son héritage magique et entrant à l'école de Poudlard.",
-      "couverture": "https://m.media-amazon.com/images/I/71-++hbbERL._AC_UF1000,1000_QL80_.jpg"
+      "couverture": "https://m.media-amazon.com/images/I/71-++hbbERL._AC_UF1000,1000_QL80_.jpg",
+      "isFavori": false
     },
     {
       "id": "7",
@@ -60,8 +65,8 @@
       "auteur": "Ernest Hemingway",
       "genre": "Roman",
       "date": "1952-09-01",
-      "resume": "L'histoire d'un vieux pêcheur cubain et de sa lutte épique avec un énorme espadon dans les eaux du Gulf Stream.",
-      "couverture": "Le_Vieil_Homme_et_la_Mer.webp"
+      "couverture": "Le_Vieil_Homme_et_la_Mer.webp",
+      "resume": "L'histoire d'un vieux pêcheur cubain et de sa lutte épique avec un énorme espadon dans les eaux du Gulf Stream."
     },
     {
       "id": "8",
@@ -79,7 +84,8 @@
       "genre": "Philosophique",
       "date": "1942-05-19",
       "resume": "Un roman existentialiste qui suit Meursault, un homme indifférent qui commet un crime apparemment sans motif et fait face à l'absurdité de l'existence.",
-      "couverture": "L'Etranger.webp"
+      "couverture": "L'Etranger.webp",
+      "isFavori": false
     },
     {
       "id": "10",
@@ -88,7 +94,8 @@
       "genre": "Réalisme magique",
       "date": "1967-05-30",
       "resume": "L'histoire de la famille Buendía sur plusieurs générations dans le village imaginaire de Macondo, mêlant réalisme et éléments magiques.",
-      "couverture": "https://m.media-amazon.com/images/I/81MI6+TpYkL._AC_UF1000,1000_QL80_.jpg"
+      "couverture": "https://m.media-amazon.com/images/I/81MI6+TpYkL._AC_UF1000,1000_QL80_.jpg",
+      "isFavori": false
     },
     {
       "id": "11",
@@ -97,7 +104,8 @@
       "genre": "Roman historique",
       "date": "1862-01-01",
       "couverture": "Les_Misérables.webp",
-      "resume": "Une vaste fresque sociale qui suit plusieurs personnages dans la France du XIXe siècle, notamment l'ancien forçat Jean Valjean."
+      "resume": "Une vaste fresque sociale qui suit plusieurs personnages dans la France du XIXe siècle, notamment l'ancien forçat Jean Valjean.",
+      "isFavori": false
     },
     {
       "id": "12",
@@ -115,16 +123,8 @@
       "genre": "Fiction psychologique",
       "date": "2020-10-22",
       "couverture": "https://servimg.eyrolles.com/static/media/7461/9791026267461_internet_w290.jpg",
-      "resume": "Dans la poubelle des vanités, il n'y a pas encore le tri sélectif. On y retrouve tous types d'ambitieux et de cupides. À ne jamais dire merci, on termine souvent son existence en demandant pardon."
-    },
-    {
-      "id": "8080",
-      "titre": "Vous dansez madame ?",
-      "auteur": "Corentin Vialle",
-      "genre": "Fiction psychologique",
-      "date": "2019-04-07",
-      "couverture": "https://servimg.eyrolles.com/static/media/2384/9791026232384_internet_w290.jpg",
-      "resume": "Anne et Xavier forment un couple à la parole impeccable, leur vie est sur des rails. Comment et pourquoi le ciel s'est-il soudain assombri et pourquoi leurs existences vont-elles irréversiblement basculer ? Le harcèlement et les a priori médiocres se nourrissent essentiellement des différences. Ils n'ont pas attendu l'arrivée d'internet pour ravager des vies. Les réseaux sociaux ont juste inventé la solitude collective... "
+      "resume": "Dans la poubelle des vanités, il n'y a pas encore le tri sélectif. On y retrouve tous types d'ambitieux et de cupides. À ne jamais dire merci, on termine souvent son existence en demandant pardon.",
+      "isFavori": false
     }
   ]
 }

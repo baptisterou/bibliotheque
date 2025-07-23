@@ -1,14 +1,18 @@
+// Imports nécessaires
 import React, { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 
+// Page pour modifier un livre existant
 function EditBook({books, updateBook}) {
+  // Récupération de l'ID du livre depuis l'URL
   const params = useParams();
   const navigate = useNavigate();
   const id = params.id
   
-
+  // Recherche du livre à modifier dans la liste
   const book = books ? books.find(book => book.id === id) : null;
 
+  // États pour gérer les champs du formulaire
   const[inputTitre, setTitre] = useState('');
   const[inputAuteur, setAuteur] = useState('');
   const[inputGenre, setGenre] = useState('');
@@ -16,7 +20,7 @@ function EditBook({books, updateBook}) {
   const[inputSrc, setSrc] = useState('');
   const[inputResume, setResume] = useState('');
 
-
+  // Effet pour remplir le formulaire avec les données du livre quand il est trouvé
   useEffect(() => {
     if (book) {
       setTitre(book.titre || '');
@@ -28,6 +32,7 @@ function EditBook({books, updateBook}) {
     }
   }, [book]);
 
+  // Fonctions pour mettre à jour les champs quand on tape dedans
   function handleTitre(e){
     setTitre(e.target.value)
   }
@@ -52,14 +57,17 @@ function EditBook({books, updateBook}) {
     setResume(e.target.value)
   }
 
+  // Fonction qui s'exécute quand on soumet le formulaire
   function handleSubmit(e) {
     e.preventDefault();
     
+    // Vérification que tous les champs obligatoires sont remplis
     if (!inputTitre || !inputAuteur || !inputGenre || !inputDate || !inputResume) {
       alert('Veuillez remplir tous les champs obligatoires (*)');
       return;
     }
 
+    // Création de l'objet livre modifié
     const updatedBook = {
       id: id,
       titre: inputTitre,
@@ -70,17 +78,19 @@ function EditBook({books, updateBook}) {
       resume: inputResume
     };
 
+    // Appel de la fonction pour mettre à jour le livre
     updateBook(id, updatedBook);
     
+    // Retour à la page d'accueil
     navigate('/');
   }
 
-  
+  // Si les livres ne sont pas encore chargés
   if (!books || books.length === 0) {
     return <div className='text-center mt-5'>Chargement...</div>;
   }
 
-
+  // Si le livre à modifier n'existe pas
   if (!book) {
     return <div className='text-center mt-5'>Livre non trouvé</div>;
   }
@@ -88,9 +98,11 @@ function EditBook({books, updateBook}) {
   return (
     <div className='d-flex flex-column col-12 align-items-center'>
       <div className='col-4 my-5'>
+        {/* Formulaire de modification pré-rempli */}
         <form onSubmit={handleSubmit}>
         <h3>Modifier le livre</h3>
         <div className='d-flex flex-column'>
+          {/* Champs obligatoires marqués avec * */}
           <label htmlFor="titre">Titre *</label>
           <input 
           type="text" className='mb-3' 
@@ -119,6 +131,7 @@ function EditBook({books, updateBook}) {
           value={inputDate}
           onChange={handleDate}
           />
+          {/* Champ optionnel pour l'image */}
           <label htmlFor="urlCover">Url de la couverture</label>
           <input 
           type="text" className='mb-3' 
@@ -133,6 +146,7 @@ function EditBook({books, updateBook}) {
           onChange={handleResume}>
 
           </textarea>
+          {/* Bouton pour sauvegarder les changements */}
           <button type="submit" className='btn btn-success mx-5'>Enregistrer les modifications</button>
         </div>
         </form>
