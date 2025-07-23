@@ -33,7 +33,7 @@ const BookCard = memo(function BookCard({titre, auteur, genre, date, resume, src
         {/* Bouton étoile pour les favoris */}
         <button 
           type="button"
-          className={`ms-5 ps-3 favorite-star ${isFavori ? 'favorite-star-active' : ''}`}
+          className={` favorite-star ${isFavori ? 'favorite-star-active' : ''}`}
           onClick={handleFavori}
           title={isFavori ? 'Retirer des favoris' : 'Ajouter aux favoris'}
         >
@@ -47,7 +47,7 @@ const BookCard = memo(function BookCard({titre, auteur, genre, date, resume, src
         <h5 className="card-title my-2">{titre}</h5>
         <h6 className="card-title my-2">{auteur}</h6>
         <h6 className="card-title my-2">{genre}</h6>
-        <h6 className="card-title my-2">{formatDate(date)}</h6>
+        <h6 className="card-title my-2 fw-bolder fst-italic">{formatDate(date)}</h6>
         {/* Résumé avec scroll si trop long */}
         <p className="card-text flex-grow-1 book-resume-scroll">{resume}</p>
           {/* Boutons d'action en bas */}

@@ -30,7 +30,7 @@ function Header({books, onGenreChange, onYearChange, onInputChange, onFavoriFilt
         <div className='d-flex justify-content-between align-items-center'>
           <div>
             {/* Titre de la bibliothèque */}
-            <h1 className='mb-3 ms-5' style={{color: isDarkMode ? '#e0e0e0' : 'white'}}>Bibliothèque</h1>
+            <h1 className='mb-3 ms-5' style={{color: isDarkMode ? '#e0e0e0' : 'white'}}>Ma Bibliothèque Personnelle</h1>
             {/* Menu de navigation */}
             <nav className='d-flex list-unstyled '>
               <NavLink 

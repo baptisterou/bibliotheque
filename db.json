@@ -18,7 +18,7 @@
       "date": "1949-06-08",
       "couverture": "https://m.media-amazon.com/images/I/71kxa1-0mfL._AC_UF1000,1000_QL80_.jpg",
       "resume": "Une vision cauchemardesque d'un futur totalitaire où la liberté de pensée est supprimée et où le gouvernement surveille chaque aspect de la vie des citoyens.",
-      "isFavori": false
+      "isFavori": true
     },
     {
       "id": "3",
@@ -95,7 +95,7 @@
       "date": "1967-05-30",
       "resume": "L'histoire de la famille Buendía sur plusieurs générations dans le village imaginaire de Macondo, mêlant réalisme et éléments magiques.",
       "couverture": "https://m.media-amazon.com/images/I/81MI6+TpYkL._AC_UF1000,1000_QL80_.jpg",
-      "isFavori": false
+      "isFavori": true
     },
     {
       "id": "11",
@@ -105,7 +105,7 @@
       "date": "1862-01-01",
       "couverture": "Les_Misérables.webp",
       "resume": "Une vaste fresque sociale qui suit plusieurs personnages dans la France du XIXe siècle, notamment l'ancien forçat Jean Valjean.",
-      "isFavori": false
+      "isFavori": true
     },
     {
       "id": "12",
@@ -117,14 +117,42 @@
       "couverture": "Voyage_au_bout_de_la_nuit.jpg"
     },
     {
-      "id": "3d97",
+      "id": "582a",
+      "titre": "La fille seule dans le vestiaire des garçons",
+      "auteur": "Hubert Ben Kemoun",
+      "genre": "Juvenile Fiction",
+      "date": "2020-01-15",
+      "couverture": "http://books.google.com/books/content?id=RGzDDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "resume": "« Ce serait donc cela mon véritable premier baiser avec un garçon ? Un mensonge, une vengeance et une trahison ? J ’avais rêvé mieux. N’importe quelle fille normale aurait rêvé mieux. » Tout commence par un baiser. Mais ce baiser va faire de la vie de Marion un enfer. Peu à peu, la honte laisse toute la place à la rage, et Marion prépare sa vengeance. Sans réfléchir aux conséquences de ses actes..."
+    },
+    {
+      "id": "dcf3",
+      "titre": "Le procès",
+      "auteur": "Franz Kafka",
+      "genre": "Theatre",
+      "date": "2000-01-01",
+      "couverture": "http://books.google.com/books/content?id=BNb-gy61vb8C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "resume": "Pièce de théâtre pour 28 * personnages (20h-8f) pouvant être joués par 10 personnages (6h-4f).",
+      "isFavori": true
+    },
+    {
+      "id": "b930",
+      "titre": "Le tour du monde en quatre-vingts jours",
+      "auteur": "Jules Verne",
+      "genre": "Fiction",
+      "date": "2024-05-09",
+      "couverture": "http://books.google.com/books/content?id=0ugGEQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "resume": "Embarquez pour un voyage épique à travers les continents avec \"Le Tour du Monde en Quatre-Vingts Jours\" de Jules Verne, un classique de l'aventure où l'intrigue palpitante, l'ingéniosité et l'exotisme se rencontrent dans un récit captivant et exaltant. Préparez-vous à être emporté dans une course contre la montre haletante, pleine de rebondissements et de découvertes fascinantes.Suivez les exploits de Phileas Fogg, un gentleman anglais impassible et méthodique, et de son fidèle serviteur, Passepartout, alors qu'ils se lancent dans un défi audacieux : faire le tour du monde en quatre-vingts jours seulement. De Londres à l'Inde, en passant par les États-Unis, les aventuriers affrontent des obstacles imprévus, des adversaires redoutables et des péripéties rocambolesques.Jules Verne tisse une toile d'aventure captivante, où l'imagination se mêle à la réalité pour créer un monde d'émerveillement et de suspense. À travers les descriptions vivantes des paysages exotiques, des moyens de transport innovants et des rencontres inattendues, l'auteur invite les lecteurs à un voyage inoubliable à travers les merveilles de notre planète.\"Le Tour du Monde en Quatre-Vingts Jours\" n'est pas seulement un récit d'aventure, c'est aussi une réflexion sur le courage, la persévérance et la capacité de l'homme à surmonter les obstacles. Les personnages attachants et les rebondissements haletants captivent les lecteurs de tous âges, les transportant dans un tourbillon d'action et d'émerveillement.Critiquement acclamé depuis sa publication, \"Le Tour du Monde en Quatre-Vingts Jours\" continue de fasciner et d'inspirer les lecteurs du monde entier. Son exploration des merveilles du monde et des défis de l'aventure en fait un classique intemporel de la littérature d'aventure, dont le charme et l'ingéniosité continuent de captiver les imaginations.Ne manquez pas cette occasion de vous embarquer dans le voyage exaltant de \"Le Tour du Monde en Quatre-Vingts Jours\". Laissez-vous emporter par l'excitation de l'aventure, la richesse des découvertes et la magie de l'imagination, dans un tour du monde épique qui vous transportera aux quatre coins de la planète. Obtenez votre exemplaire dès maintenant et rejoignez les millions de lecteurs qui ont été captivés par ce chef-d'œuvre intemporel de Jules Verne.",
+      "isFavori": true
+    },
+    {
+      "id": "a43d",
       "titre": "La poubelle des vanités",
       "auteur": "Corentin Vialle",
-      "genre": "Fiction psychologique",
-      "date": "2020-10-22",
-      "couverture": "https://servimg.eyrolles.com/static/media/7461/9791026267461_internet_w290.jpg",
-      "resume": "Dans la poubelle des vanités, il n'y a pas encore le tri sélectif. On y retrouve tous types d'ambitieux et de cupides. À ne jamais dire merci, on termine souvent son existence en demandant pardon.",
-      "isFavori": false
+      "genre": "Fiction",
+      "date": "2025-02-07",
+      "couverture": "http://books.google.com/books/content?id=oxxEEQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "resume": "\"La poubelle des vanités\" offre un portrait mordant d’un univers où le tri sélectif moral n’a pas encore fait son apparition. Cupides et véreux s’y côtoient, chacun manipulant ou exploitant les ambitions des autres pour atteindre leurs propres objectifs. Dans cette galerie de personnages détestables, mais étrangement familiers, une course effrénée s’engage, rythmée par des intrigues et des manœuvres douteuses. À l’issue de cette compétition sans scrupules, une question demeure : peut-il vraiment y avoir un vainqueur ? À PROPOS DE L'AUTEUR En mars 2020, en raison de la pandémie, tout s’est figé. Corentin Vialle, habitué à écouter les bruissements de la plaine, remarqua pour la première fois le silence de l’autoroute, comme lors des rares matins enneigés. C’était l’instant. Écrire devenait une nécessité, un refuge face à la torpeur ambiante et aux décomptes incessants des chaînes d’information. En jetant un regard à sa bibliothèque, il croisa les yeux de Delacourt, Sattouf, Balzac, Lemaitre et Proust, ces provocateurs bienveillants qui semblaient le défier : « T’es pas cap. » Il leur répondit : « OK, mais pas de moqueries sur le résultat. » Mal lui en prit, ces génies rient de tout."
     }
   ]
 }

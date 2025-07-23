@@ -1,3 +1,46 @@
+/* Titre principal de la bibliothèque */
+h1 {
+  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Améliorations pour les cartes de livres */
+.card-title {
+  margin-bottom: 0.75rem;
+  color: #2c3e50;
+}
+
+.card-text {
+  color: #5a6c7d;
+  text-align: justify;
+}
+
+/* Sous-titres des cartes (auteur, genre, date) */
+.card h6 {
+  font-weight: 500;
+  color: #6c757d;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+/* Labels de formulaire */
+label {
+  color: #495057;
+  font-size: 0.95rem;
+}
+
+/* Amélioration de la lisibilité des liens de navigation */
+.navbar-nav .nav-link {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Pagination avec meilleure typographie */
+.pagination .page-link {
+  font-size: 0.9rem;
+}
+
+
 /* Favori : effet de clic (scale) */
 .favorite-star:active {
   transform: scale(0.85) rotate(-10deg);
@@ -77,6 +120,20 @@
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Améliorations typographiques pour le mode sombre */
+.dark-theme h1 {
+  color: #f5f5f5;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.dark-theme h3 {
+  color: #e8e8e8;
+}
+
+.dark-theme label {
+  color: #b0b0b0;
+}
+
 /* Cartes */
 .dark-theme .card {
   background-color: #1e1e1e;
@@ -84,9 +141,16 @@
   color: #e0e0e0;
 }
 
-.dark-theme .card-title,
+.dark-theme .card-title {
+  color: #f0f0f0;
+}
+
 .dark-theme .card-text {
-  color: #e0e0e0;
+  color: #c0c0c0;
+}
+
+.dark-theme .card h6 {
+  color: #a0a0a0;
 }
 
 /* Formulaires */
@@ -535,4 +599,31 @@
   background-color: #664d03;
   border-color: #ffc107;
   color: #fff3cd;
+}
+
+/* === STYLES POUR LES SUGGESTIONS DE LIVRES === */
+
+/* Container des suggestions */
+.suggestion-item {
+  transition: background-color 0.2s ease;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.suggestion-item:last-child {
+  border-bottom: none;
+}
+
+.suggestion-item:hover {
+  background-color: #f8f9fa !important;
+}
+
+/* Amélioration pour le mode sombre */
+.dark-theme .suggestion-item {
+  background-color: #2d2d2d;
+  border-bottom-color: #404040;
+  color: #e0e0e0;
+}
+
+.dark-theme .suggestion-item:hover {
+  background-color: #404040 !important;
 }
