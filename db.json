@@ -8,7 +8,7 @@
       "date": "1845-08-28",
       "couverture": "Monte_Cristo.webp",
       "resume": "Un classique de la littérature française qui raconte l'histoire d'Edmond Dantès, injustement emprisonné, qui s'échappe et se venge méthodiquement de ceux qui l'ont trahi.",
-      "isFavori": true
+      "isFavori": false
     },
     {
       "id": "2",
@@ -57,7 +57,7 @@
       "date": "1997-06-26",
       "resume": "Le premier livre de la série Harry Potter qui suit les aventures d'un jeune sorcier découvrant son héritage magique et entrant à l'école de Poudlard.",
       "couverture": "https://m.media-amazon.com/images/I/71-++hbbERL._AC_UF1000,1000_QL80_.jpg",
-      "isFavori": true
+      "isFavori": false
     },
     {
       "id": "7",
@@ -153,6 +153,15 @@
       "date": "2025-02-07",
       "couverture": "http://books.google.com/books/content?id=oxxEEQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
       "resume": "\"La poubelle des vanités\" offre un portrait mordant d’un univers où le tri sélectif moral n’a pas encore fait son apparition. Cupides et véreux s’y côtoient, chacun manipulant ou exploitant les ambitions des autres pour atteindre leurs propres objectifs. Dans cette galerie de personnages détestables, mais étrangement familiers, une course effrénée s’engage, rythmée par des intrigues et des manœuvres douteuses. À l’issue de cette compétition sans scrupules, une question demeure : peut-il vraiment y avoir un vainqueur ? À PROPOS DE L'AUTEUR En mars 2020, en raison de la pandémie, tout s’est figé. Corentin Vialle, habitué à écouter les bruissements de la plaine, remarqua pour la première fois le silence de l’autoroute, comme lors des rares matins enneigés. C’était l’instant. Écrire devenait une nécessité, un refuge face à la torpeur ambiante et aux décomptes incessants des chaînes d’information. En jetant un regard à sa bibliothèque, il croisa les yeux de Delacourt, Sattouf, Balzac, Lemaitre et Proust, ces provocateurs bienveillants qui semblaient le défier : « T’es pas cap. » Il leur répondit : « OK, mais pas de moqueries sur le résultat. » Mal lui en prit, ces génies rient de tout."
+    },
+    {
+      "id": "4db8",
+      "titre": "Flash ou le grand voyage",
+      "auteur": "Charles Duchaussois",
+      "genre": "Social Science",
+      "date": "2013-11-15",
+      "couverture": "http://books.google.com/books/content?id=OuhlDwAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "resume": "Charles Duchaussois relate son parcours jalonné d'aventures pour arriver à Katmandou, le haut lieu de la drogue et des hippies : associé à des trafiquants d'armes à Beyrouth, récoltant du hachish dans les montagnes libanaises, dirigeant un night-club à Koweit, médecin et chirurgien au Népal..."
     }
   ]
 }

@@ -26,7 +26,7 @@ const[showSuggestions, setShowSuggestions] = useState(false);
 // Fermer les suggestions quand on clique ailleurs
 useEffect(() => {
   function handleClickOutside(event) {
-    if (!event.target.closest('.position-relative')) {
+    if (!event.target.closest('.book-suggestions-container')) {
       setShowSuggestions(false);
     }
   }
@@ -137,12 +137,20 @@ useEffect(() => {
 
   // Fonction pour sélectionner une suggestion
   function selectSuggestion(book) {
-    setTitre(book.titre);
-    setAuteur(book.auteur);
-    setGenre(book.genre);
-    setDate(book.date);
-    setSrc(book.couverture);
-    setResume(book.resume);
+    console.log('Sélection du livre:', book);
+    console.log('Titre:', book.titre);
+    console.log('Auteur:', book.auteur);
+    console.log('Genre:', book.genre);
+    console.log('Date:', book.date);
+    console.log('Couverture:', book.couverture);
+    console.log('Résumé:', book.resume);
+    
+    setTitre(book.titre || '');
+    setAuteur(book.auteur || '');
+    setGenre(book.genre || '');
+    setDate(book.date || '');
+    setSrc(book.couverture || '');
+    setResume(book.resume || '');
     setShowSuggestions(false);
     setSuggestions([]);
   }
@@ -236,7 +244,10 @@ useEffect(() => {
                     <div 
                       key={book.id || index} 
                       className="book-suggestion-item"
-                      onClick={() => selectSuggestion(book)}
+                      onMouseDown={(e) => {
+                        e.preventDefault(); // Empêche la fermeture prématurée
+                        selectSuggestion(book);
+                      }}
                     >
                       {book.couverture && (
                         <img 

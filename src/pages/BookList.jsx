@@ -8,6 +8,7 @@ function BookList({books, genre, year, input, isFavoriFilter, deleteEntry, toggl
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedBook, setSelectedBook] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [sortOption, setSortOption] = useState('titre-asc'); // État pour le tri
   const navigate = useNavigate();
   const booksPerPage = 8;
   
@@ -27,6 +28,30 @@ function BookList({books, genre, year, input, isFavoriFilter, deleteEntry, toggl
     navigate(`/edit/${bookId}`);
   };
 
+  // Fonction pour gérer le changement de tri
+  const handleSortChange = (e) => {
+    setSortOption(e.target.value);
+    setCurrentPage(1); // Retour à la première page lors du changement de tri
+  };
+
+  // Fonction pour trier les livres
+  const sortBooks = (books, sortOption) => {
+    const sortedBooks = [...books];
+    
+    switch (sortOption) {
+      case 'titre-asc':
+        return sortedBooks.sort((a, b) => a.titre.localeCompare(b.titre));
+      case 'titre-desc':
+        return sortedBooks.sort((a, b) => b.titre.localeCompare(a.titre));
+      case 'date-asc':
+        return sortedBooks.sort((a, b) => new Date(a.date) - new Date(b.date));
+      case 'date-desc':
+        return sortedBooks.sort((a, b) => new Date(b.date) - new Date(a.date));
+      default:
+        return sortedBooks;
+    }
+  };
+
   const { totalBooks, totalPages, currentBooks, indexOfFirstBook, indexOfLastBook } = useMemo(() => {
     const filteredBooks = genre ? books.filter(book => book.genre === genre) : books;
     const filteredYear = year ? filteredBooks.filter(book => book.date.substring(0,4) === year) : filteredBooks;
@@ -35,16 +60,19 @@ function BookList({books, genre, year, input, isFavoriFilter, deleteEntry, toggl
       book.titre.toLowerCase().includes(input.toLowerCase()) || 
       book.auteur.toLowerCase().includes(input.toLowerCase())
     ) : filteredYear;
-    const result = isFavoriFilter ? filteredInput.filter(book => book.isFavori === true) : filteredInput;
+    const filteredFavori = isFavoriFilter ? filteredInput.filter(book => book.isFavori === true) : filteredInput;
+    
+    // Application du tri
+    const sortedBooks = sortBooks(filteredFavori, sortOption);
 
-    const totalBooks = result.length;
+    const totalBooks = sortedBooks.length;
     const totalPages = Math.ceil(totalBooks / booksPerPage);
     const indexOfLastBook = currentPage * booksPerPage;
     const indexOfFirstBook = indexOfLastBook - booksPerPage;
-    const currentBooks = result.slice(indexOfFirstBook, indexOfLastBook);
+    const currentBooks = sortedBooks.slice(indexOfFirstBook, indexOfLastBook);
     
     return { totalBooks, totalPages, currentBooks, indexOfFirstBook, indexOfLastBook };
-  }, [books, genre, year, input, isFavoriFilter, currentPage, booksPerPage]);
+  }, [books, genre, year, input, isFavoriFilter, currentPage, booksPerPage, sortOption]);
 
 
   const nextPage = () => {
@@ -97,6 +125,26 @@ function BookList({books, genre, year, input, isFavoriFilter, deleteEntry, toggl
         </div>
       ) : (
         <>
+          {/* Barre de tri */}
+          <div className="sort-container mt-5">
+            <div className="sort-wrapper">
+              <label htmlFor="sort-select" className="sort-label">
+                 Trier par :
+              </label>
+              <select 
+                id="sort-select"
+                value={sortOption} 
+                onChange={handleSortChange}
+                className="sort-select"
+              >
+                <option value="titre-asc">Titre (A → Z)</option>
+                <option value="titre-desc">Titre (Z → A)</option>
+                <option value="date-asc">Date (Anciens → Récents)</option>
+                <option value="date-desc">Date (Récents → Anciens)</option>
+              </select>
+            </div>
+          </div>
+
           {/* Grille des livres */}
           <div className="grid grid-cols-4 gap-6 mb-8">
             {currentBooks.map(book =>

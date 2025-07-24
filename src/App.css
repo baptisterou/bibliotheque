@@ -1514,6 +1514,81 @@ h2, h3, h4, h5, h6 {
 }
 
 /* ===============================================
+   📊 SYSTÈME DE TRI
+   =============================================== */
+
+.sort-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.sort-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--surface);
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-fast);
+}
+
+.sort-wrapper:hover {
+  border-color: var(--border-medium);
+  box-shadow: var(--shadow-md);
+}
+
+.sort-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.sort-select {
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-sm);
+  transition: var(--transition-fast);
+  min-width: 200px;
+}
+
+.sort-select:hover {
+  background: var(--bg-tertiary);
+}
+
+.sort-select:focus {
+  background: var(--bg-tertiary);
+  box-shadow: 0 0 0 2px var(--primary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sort-container {
+    justify-content: center;
+  }
+  
+  .sort-wrapper {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+  
+  .sort-select {
+    min-width: 180px;
+  }
+}
+
+/* ===============================================
    🔍 FILTRES ET NAVIGATION
    =============================================== */
 
