@@ -1,6 +1,3 @@
-// Import de React
-import React from 'react'
-
 // Composant barre de filtres pour rechercher et filtrer les livres
 function FilterBar({books, onGenreChange, onYearChange, onInputChange, onFavoriFilterChange, onStatutLectureChange, genre, year, input, isFavoriFilter, statutLectureFilter}) {
   

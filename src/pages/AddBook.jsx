@@ -1,7 +1,4 @@
-// Imports nécessaires
-import React from 'react'
 import { useState, useEffect } from 'react';
-import { Navigate } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 // Page pour ajouter un nouveau livre

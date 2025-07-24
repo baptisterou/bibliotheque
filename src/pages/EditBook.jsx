@@ -1,5 +1,4 @@
-// Imports nécessaires
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 
 // Page pour modifier un livre existant

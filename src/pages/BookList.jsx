@@ -1,4 +1,3 @@
-import React from 'react';
 import { useState, useRef, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BookCard from '../components/BookCard'

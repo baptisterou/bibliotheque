@@ -1,5 +1,3 @@
-// Imports nécessaires
-import React from 'react';
 import { useTheme } from '../contexts/ThemeContext';
 
 // Composant bouton moderne pour basculer entre mode sombre et clair

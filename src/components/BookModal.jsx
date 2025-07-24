@@ -1,5 +1,3 @@
-import React from 'react';
-
 const BookModal = ({ book, isOpen, onClose, onEdit, onDelete, onToggleFavorite, onToggleStatutLecture }) => {
   if (!isOpen || !book) return null;
 

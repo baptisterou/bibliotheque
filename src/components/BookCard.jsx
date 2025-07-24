@@ -1,5 +1,4 @@
-// Imports nécessaires
-import React, { memo } from 'react'
+import { memo } from 'react'
 import { Link } from 'react-router-dom'
 
 // Composant carte de livre moderne - memo pour éviter les re-rendus inutiles
