@@ -1,12 +1,32 @@
 import React from 'react';
 import { useState, useRef, useEffect, useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
 import BookCard from '../components/BookCard'
+import BookModal from '../components/BookModal'
 
-function BookList({books, genre, year, input, isFavoriFilter, deleteEntry, editEntry, toggleFavori}) {
+function BookList({books, genre, year, input, isFavoriFilter, deleteEntry, toggleFavori}) {
   const [currentPage, setCurrentPage] = useState(1);
+  const [selectedBook, setSelectedBook] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const navigate = useNavigate();
   const booksPerPage = 8;
-  // ...
+  
   const prevFilters = useRef({ genre, year, input, isFavoriFilter });
+  // Fonctions pour gérer le modal
+  const handleBookClick = (book) => {
+    setSelectedBook(book);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedBook(null);
+  };
+
+  const handleEditBook = (bookId) => {
+    navigate(`/edit/${bookId}`);
+  };
+
   const { totalBooks, totalPages, currentBooks, indexOfFirstBook, indexOfLastBook } = useMemo(() => {
     const filteredBooks = genre ? books.filter(book => book.genre === genre) : books;
     const filteredYear = year ? filteredBooks.filter(book => book.date.substring(0,4) === year) : filteredBooks;
@@ -63,57 +83,89 @@ function BookList({books, genre, year, input, isFavoriFilter, deleteEntry, editE
     }
   }, [currentPage, totalPages]);
   return (
-    <div>
-      <div className='d-flex flex-wrap row'>
-        {currentBooks.map((book) => 
-          <BookCard 
-            key={book.id} 
-            id={book.id} 
-            titre={book.titre} 
-            src={book.couverture.includes('http') ? book.couverture : `../../public/images/${book.couverture}`} 
-            genre={book.genre} 
-            auteur={book.auteur} 
-            date={book.date} 
-            resume={book.resume} 
-            isFavori={book.isFavori || false}
-            deleteEntry={deleteEntry} 
-            editEntry={editEntry}
-            toggleFavori={toggleFavori}
-          />
-        )}
-      </div>
-      
-      {totalPages > 1 && (
-        <div className="d-flex justify-content-center align-items-center mt-4 mb-3">
-          <nav aria-label="Navigation de pagination">
-            <ul className="pagination mb-0">
-              <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
-                <button className="page-link" onClick={prevPage} disabled={currentPage === 1}>
-                  Précédent
-                </button>
-              </li>
+    <div className="container mt-8">
+      {/* Message si aucun livre */}
+      {currentBooks.length === 0 ? (
+        <div className="empty-state">
+          <div className="icon">📚</div>
+          <div className="title">Aucun livre trouvé</div>
+          <div className="description">
+            {totalBooks === 0 
+              ? "Votre bibliothèque est vide. Commencez par ajouter quelques livres !" 
+              : "Aucun livre ne correspond à vos critères de recherche."}
+          </div>
+        </div>
+      ) : (
+        <>
+          {/* Grille des livres */}
+          <div className="grid grid-cols-4 gap-6 mb-8">
+            {currentBooks.map(book =>
+              <BookCard 
+                key={book.id}
+                id={book.id}
+                titre={book.titre} 
+                src={book.couverture} 
+                auteur={book.auteur} 
+                genre={book.genre} 
+                date={book.date} 
+                resume={book.resume} 
+                isFavori={book.isFavori || false}
+                deleteEntry={deleteEntry} 
+                toggleFavori={toggleFavori}
+                onClick={handleBookClick}
+              />
+            )}
+          </div>
+          
+          {/* Pagination */}
+          {totalPages > 1 && (
+            <div className="pagination">
+              <button 
+                className={`page-btn ${currentPage === 1 ? 'disabled' : ''}`}
+                onClick={prevPage} 
+                disabled={currentPage === 1}
+              >
+                ←
+              </button>
               
               {Array.from({ length: totalPages }, (_, index) => (
-                <li key={index + 1} className={`page-item ${currentPage === index + 1 ? 'active' : ''}`}>
-                  <button className="page-link" onClick={() => goToPage(index + 1)}>
-                    {index + 1}
-                  </button>
-                </li>
+                <button 
+                  key={index + 1} 
+                  className={`page-btn ${currentPage === index + 1 ? 'active' : ''}`}
+                  onClick={() => goToPage(index + 1)}
+                >
+                  {index + 1}
+                </button>
               ))}
               
-              <li className={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}>
-                <button className="page-link" onClick={nextPage} disabled={currentPage === totalPages}>
-                  Suivant
-                </button>
-              </li>
-            </ul>
-          </nav>
-        </div>
+              <button 
+                className={`page-btn ${currentPage === totalPages ? 'disabled' : ''}`}
+                onClick={nextPage} 
+                disabled={currentPage === totalPages}
+              >
+                →
+              </button>
+            </div>
+          )}
+          
+          {/* Statistiques */}
+          <div className="text-center text-sm text-tertiary mb-8">
+            Affichage de <span className="font-medium">{indexOfFirstBook + 1}</span> à{' '}
+            <span className="font-medium">{Math.min(indexOfLastBook, totalBooks)}</span> sur{' '}
+            <span className="font-medium">{totalBooks}</span> livre(s)
+          </div>
+        </>
       )}
       
-      <div className="text-center text-muted mb-3">
-        Affichage de {indexOfFirstBook + 1} à {Math.min(indexOfLastBook, totalBooks)} sur {totalBooks} livre(s)
-      </div>
+      {/* Modal pour afficher les détails du livre */}
+      <BookModal
+        book={selectedBook ? books.find(b => b.id === selectedBook.id) || selectedBook : null}
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        onEdit={handleEditBook}
+        onDelete={deleteEntry}
+        onToggleFavorite={toggleFavori}
+      />
     </div>
   )
 }

@@ -1,60 +1,97 @@
 // Imports nécessaires
 import React, { memo } from 'react'
-import { NavLink, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
-// Composant carte de livre - memo pour éviter les re-rendus inutiles
-const BookCard = memo(function BookCard({titre, auteur, genre, date, resume, src, id, isFavori, deleteEntry, toggleFavori}) {
+// Composant carte de livre moderne - memo pour éviter les re-rendus inutiles
+const BookCard = memo(function BookCard({
+  titre, 
+  auteur, 
+  genre, 
+  date, 
+  resume, 
+  src, 
+  id, 
+  isFavori, 
+  deleteEntry, 
+  toggleFavori,
+  onClick
+}) {
 
   // Fonction pour supprimer le livre
-  function handleDelete () {
+  function handleDelete(e) {
+    e.stopPropagation();
     deleteEntry(id);
   }
 
   // Fonction pour ajouter/enlever des favoris
-  function handleFavori (event) {
-    event.preventDefault();
-    event.stopPropagation();
+  function handleFavori(e) {
+    e.preventDefault();
+    e.stopPropagation();
     toggleFavori(id);
+  }
+
+  // Fonction pour gérer le clic sur la carte
+  function handleCardClick() {
+    onClick?.({ id, titre, auteur, genre, date, resume, couverture: src, isFavori });
   }
 
   // Fonction pour mettre la date au bon format français
   function formatDate(dateString) {
     const date = new Date(dateString);
-    const day = date.getDate().toString().padStart(2, '0');
-    const month = (date.getMonth() + 1).toString().padStart(2, '0');
-    const year = date.getFullYear();
-    return `${day}/${month}/${year}`;
+    return date.toLocaleDateString('fr-FR', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric'
+    });
   }
 
   return (
-    <div className='col-12 col-md-6 col-lg-4 col-xl-3 d-flex flex-column align-items-center mt-5 p-5 rounded '>
-      {/* Carte du livre avec taille fixe */}
-      <div className="card border border-2 shadow-lg position-relative" style={{width: '18rem', height: '600px'}}>
-        {/* Bouton étoile pour les favoris */}
+    <div className='col-12 col-md-6 col-lg-4 col-xl-3 d-flex flex-column'>
+      <div className="book-card slide-up" onClick={handleCardClick}>
+        {/* Bouton favori */}
         <button 
-          type="button"
-          className={` favorite-star ${isFavori ? 'favorite-star-active' : ''}`}
+          className={`favorite-btn ${isFavori ? 'active' : ''}`}
           onClick={handleFavori}
           title={isFavori ? 'Retirer des favoris' : 'Ajouter aux favoris'}
         >
-          {isFavori ? '⭐' : '★'}
+          <span className="icon">{isFavori ? '★' : '☆'}</span>
         </button>
         
         {/* Image de couverture */}
-        <img src={src} className="card-img-top img-fluid mt-1" alt={titre} style={{maxHeight : '200px', objectFit: 'contain'}}/>
-        <div className="card-body d-flex flex-column">
-        {/* Infos du livre */}
-        <h5 className="card-title my-2">{titre}</h5>
-        <h6 className="card-title my-2">{auteur}</h6>
-        <h6 className="card-title my-2">{genre}</h6>
-        <h6 className="card-title my-2 fw-bolder fst-italic">{formatDate(date)}</h6>
-        {/* Résumé avec scroll si trop long */}
-        <p className="card-text flex-grow-1 book-resume-scroll">{resume}</p>
-          {/* Boutons d'action en bas */}
-          <div className='d-flex justify-content-around flex-wrap mt-auto'>
-                    <Link to={`/edit/${id}`} className='btn btn-primary px-3 my-1'>Modifier</Link>
-          <a href="#" id={id} className='btn btn-danger px-3 my-1' onClick={handleDelete}>Supprimer</a>
-        </div>
+        {src && (
+          <img 
+            src={src.startsWith('http') ? src : `/images/${src}`}
+            className="book-image" 
+            alt={titre}
+          />
+        )}
+        
+        {/* Contenu de la carte */}
+        <div className="flex flex-col" style={{ flex: 1 }}>
+          <h5 className="book-title">{titre}</h5>
+          <div className="book-author">{auteur}</div>
+          <div className="book-genre">{genre}</div>
+          <div className="book-date">{formatDate(date)}</div>
+          
+          {/* Résumé avec ellipsis */}
+          <p className="book-resume">{resume}</p>
+          
+          {/* Boutons d'action */}
+          <div className='book-actions'>
+            <Link 
+              to={`/edit/${id}`} 
+              className='btn btn-primary'
+              onClick={(e) => e.stopPropagation()}
+            >
+              ✏️ Modifier
+            </Link>
+            <button 
+              className='btn btn-danger' 
+              onClick={handleDelete}
+            >
+              🗑️ Supprimer
+            </button>
+          </div>
         </div>
       </div>
     </div>

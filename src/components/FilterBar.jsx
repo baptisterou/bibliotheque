@@ -70,53 +70,80 @@ function FilterBar({books, onGenreChange, onYearChange, onInputChange, onFavoriF
   }
   
   return (
-    <div className='d-flex justify-content-around flex-wrap'>
-      {/* Champ de recherche textuelle */}
-      <div className='d-flex flex-column'>
-        <label className='mb-3' htmlFor="recherche">Recherche</label>
-        <input type="text" name="recherche" value={input} onChange={handleInputChange}/>
-      </div>
-      {/* Sélecteur de genre */}
-      <div className='d-flex flex-column'>
-        <label className='mb-3' htmlFor="genre">Filtrer par genre</label>
-        <select name="genre" value={genre} onChange={handleGenreChange}>
-          <option value="">Tous les genres</option>
-          {genresBooks.sort().map((genre)=>
-          <option key={genre} value={genre}>{genre}</option>
-          )}
-        </select>
-      </div>
-      {/* Sélecteur d'année */}
-      <div className='d-flex flex-column'>
-        <label className='mb-3' htmlFor="annee">Filtrer par annee</label>
-        <select name="annee" value={year} onChange={handleYearChange}>
-          <option value="">Année</option>
-          {yearBooks.sort().map((year)=>
-          <option key={year} value={year}>{year}</option>
-          )}
-        </select>
-      </div>
-      {/* Checkbox pour les favoris uniquement */}
-      <div className='d-flex flex-column align-items-center'>
-        <label className='mb-3' htmlFor="favoris">Favoris uniquement</label>
-        <div className="favorite-filter-container">
-          <input 
-            type="checkbox" 
-            id="favoris" 
-            name="favoris" 
-            checked={isFavoriFilter}
-            onChange={handleFavoriFilterChange}
-            className="favorite-filter-checkbox"
-          />
-          <label htmlFor="favoris" className="favorite-filter-label">
-            <span className="favorite-filter-star">⭐</span>
+    <div className='filter-container'>
+      <div className='filter-grid'>
+        {/* Champ de recherche textuelle */}
+        <div className='filter-group '>
+          <label className='filter-label' htmlFor="recherche">
+            <span className="filter-icon">🔍</span>
+            Recherche
           </label>
+          <input 
+            type="text" 
+            name="recherche" 
+            value={input} 
+            onChange={handleInputChange}
+            placeholder="Titre, auteur, résumé..."
+            className="filter-input"
+          />
         </div>
-      </div>
-      {/* Bouton pour tout remettre à zéro */}
-      <div className='d-flex flex-column'>
-        <div className='mb-3'></div>
-        <button className="btn btn-secondary btn-sm fw-bold" onClick={resetFilters}>Reinitialiser les filtres</button>
+        
+        {/* Sélecteur de genre */}
+        <div className='filter-group'>
+          <label className='filter-label' htmlFor="genre">
+            <span className="filter-icon">📚</span>
+            Genre
+          </label>
+          <select name="genre" value={genre} onChange={handleGenreChange} className="filter-select">
+            <option value="">Tous les genres</option>
+            {genresBooks.sort().map((genre)=>
+            <option key={genre} value={genre}>{genre}</option>
+            )}
+          </select>
+        </div>
+        
+        {/* Sélecteur d'année */}
+        <div className='filter-group'>
+          <label className='filter-label' htmlFor="annee">
+            <span className="filter-icon">📅</span>
+            Année
+          </label>
+          <select name="annee" value={year} onChange={handleYearChange} className="filter-select">
+            <option value="">Toutes les années</option>
+            {yearBooks.sort().map((year)=>
+            <option key={year} value={year}>{year}</option>
+            )}
+          </select>
+        </div>
+        
+        {/* Checkbox pour les favoris uniquement */}
+        <div className='filter-group filter-checkbox'>
+          <label className='filter-label' htmlFor="favoris">
+            <span className="filter-icon">⭐</span>
+            Favoris
+          </label>
+          <div className="checkbox-container">
+            <input 
+              type="checkbox" 
+              id="favoris" 
+              name="favoris" 
+              checked={isFavoriFilter}
+              onChange={handleFavoriFilterChange}
+              className="filter-checkbox-input"
+            />
+            <label htmlFor="favoris" className="filter-checkbox-label">
+              <span className="checkbox-check">✓</span>
+            </label>
+          </div>
+        </div>
+        
+        {/* Bouton pour tout remettre à zéro */}
+        <div className='filter-group filter-reset'>
+          <button className="btn btn-secondary" onClick={resetFilters}>
+
+            Réinitialiser les filtres
+          </button>
+        </div>
       </div>
     </div>
   )

@@ -196,91 +196,147 @@ useEffect(() => {
 
 
   return (
-    <div className='d-flex flex-column col-12 align-items-center'>
-      <div className='col-4 my-5'>
-        {/* Formulaire pour ajouter un livre */}
+    <div className='book-form-container'>
+      <div className='book-form-card'>
+        {/* Formulaire pour ajouter un livre avec design technique */}
         <form onSubmit={handleSubmit}>
-        <h3>Ajouter un livre</h3>
-        <div className='d-flex flex-column'>
-          {/* Champs obligatoires marqués avec * */}
-          <label htmlFor="titre">Titre *</label>
-          <div className="position-relative">
-            <input 
-              type="text" 
-              className='mb-3' 
-              name='Titre' 
-              value={inputTitre} 
-              onChange={handleTitre} 
-              required
-              placeholder="Commencez à taper le titre du livre..."
-              autoComplete="off"
-            />
-            
-            {/* Indicateur de chargement */}
-            {isLoading && (
-              <div className="position-absolute" style={{top: '10px', right: '10px'}}>
-                <small className="text-muted">Recherche...</small>
-              </div>
-            )}
-            
-            {/* Liste des suggestions */}
-            {showSuggestions && suggestions.length > 0 && (
-              <div 
-                className="position-absolute w-100 bg-white border rounded shadow-lg" 
-                style={{top: '100%', zIndex: 1000, maxHeight: '300px', overflowY: 'auto'}}
-              >
-                {suggestions.map((book, index) => (
-                  <div 
-                    key={book.id || index} 
-                    className="p-3 border-bottom suggestion-item"
-                    onClick={() => selectSuggestion(book)}
-                    style={{cursor: 'pointer'}}
-                    onMouseEnter={(e) => e.target.style.backgroundColor = '#f8f9fa'}
-                    onMouseLeave={(e) => e.target.style.backgroundColor = 'white'}
-                  >
-                    <div className="d-flex">
+          <h2 className='book-form-title'>
+            <span className="code-accent">✨</span> Ajouter un nouveau livre
+          </h2>
+          
+          {/* Champ titre avec suggestions */}
+          <div className='book-form-group'>
+            <label htmlFor="titre" className='book-form-label'>
+              📖 Titre <span style={{color: 'var(--danger)'}}>*</span>
+            </label>
+            <div className="book-suggestions-container">
+              <input 
+                type="text" 
+                className='book-form-input' 
+                name='Titre' 
+                value={inputTitre} 
+                onChange={handleTitre} 
+                required
+                placeholder="Commencez à taper le titre du livre..."
+                autoComplete="off"
+              />
+              
+              {/* Indicateur de chargement */}
+              {isLoading && (
+                <div className="loading-indicator">
+                  <div className="loading-spinner"></div>
+                  <span>Recherche en cours...</span>
+                </div>
+              )}
+              
+              {/* Liste des suggestions */}
+              {showSuggestions && suggestions.length > 0 && (
+                <div className="book-suggestions-list">
+                  {suggestions.map((book, index) => (
+                    <div 
+                      key={book.id || index} 
+                      className="book-suggestion-item"
+                      onClick={() => selectSuggestion(book)}
+                    >
                       {book.couverture && (
                         <img 
                           src={book.couverture} 
                           alt={book.titre}
-                          className="me-3"
-                          style={{width: '40px', height: '60px', objectFit: 'cover'}}
+                          className="book-suggestion-image"
                         />
                       )}
-                      <div>
-                        <strong>{book.titre}</strong>
-                        <br />
-                        <small className="text-muted">
+                      <div className="book-suggestion-content">
+                        <div className="book-suggestion-title">{book.titre}</div>
+                        <div className="book-suggestion-meta">
                           {book.auteur} {book.date && `(${book.date.substring(0, 4)})`}
-                        </small>
+                        </div>
                         {book.genre && (
-                          <br />
-                        )}
-                        {book.genre && (
-                          <small className="text-info">{book.genre}</small>
+                          <div className="book-suggestion-genre">{book.genre}</div>
                         )}
                       </div>
                     </div>
-                  </div>
-                ))}
-              </div>
-            )}
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
           
-          <label htmlFor="auteur">Auteur *</label>
-          <input type="text" className='mb-3' name='auteur' value={inputAuteur} onChange={handleAuteur} required/>
-          <label htmlFor="genre">Genre *</label>
-          <input type="text" className='mb-3' name='genre' value={inputGenre} onChange={handleGenre} required/>
-          <label htmlFor="datePublication">Date de publication *</label>
-          <input type="date" className='mb-3' name="datePublication" id="datePublication" value={inputDate} onChange={handleDate} required/>
-          {/* Champ optionnel pour l'image de couverture */}
-          <label htmlFor="urlCover">Url de la couverture</label>
-          <input type="url" className='mb-3' name="urlCover" value={inputSrc} onChange={handleSrc}/>
-          <label htmlFor="resume">Résumé *</label>
-          <textarea name="resume" className='mb-3' cols="30" rows="10" value={inputResume} onChange={handleResume} required></textarea>
-          {/* Bouton pour sauvegarder */}
-          <button type="submit" className='btn btn-success mx-5'>Enregistrer les modifications</button>
-        </div>
+          <div className='book-form-group'>
+            <label htmlFor="auteur" className='book-form-label'>
+              ✍️ Auteur <span style={{color: 'var(--danger)'}}>*</span>
+            </label>
+            <input 
+              type="text" 
+              className='book-form-input' 
+              name='auteur' 
+              value={inputAuteur} 
+              onChange={handleAuteur} 
+              required
+              placeholder="Nom de l'auteur"
+            />
+          </div>
+          
+          <div className='book-form-group'>
+            <label htmlFor="genre" className='book-form-label'>
+              🏷️ Genre <span style={{color: 'var(--danger)'}}>*</span>
+            </label>
+            <input 
+              type="text" 
+              className='book-form-input' 
+              name='genre' 
+              value={inputGenre} 
+              onChange={handleGenre} 
+              required
+              placeholder="Genre littéraire"
+            />
+          </div>
+          
+          <div className='book-form-group'>
+            <label htmlFor="datePublication" className='book-form-label'>
+              📅 Date de publication <span style={{color: 'var(--danger)'}}>*</span>
+            </label>
+            <input 
+              type="date" 
+              className='book-form-input' 
+              name="datePublication" 
+              id="datePublication" 
+              value={inputDate} 
+              onChange={handleDate} 
+              required
+            />
+          </div>
+          
+          <div className='book-form-group'>
+            <label htmlFor="urlCover" className='book-form-label'>
+              🖼️ URL de la couverture
+            </label>
+            <input 
+              type="url" 
+              className='book-form-input' 
+              name="urlCover" 
+              value={inputSrc} 
+              onChange={handleSrc} 
+              placeholder="https://exemple.com/couverture.jpg"
+            />
+          </div>
+          
+          <div className='book-form-group'>
+            <label htmlFor="resume" className='book-form-label'>
+              📝 Résumé <span style={{color: 'var(--danger)'}}>*</span>
+            </label>
+            <textarea 
+              name="resume" 
+              className='book-form-textarea' 
+              value={inputResume} 
+              onChange={handleResume} 
+              required
+              placeholder="Décrivez brièvement l'histoire du livre..."
+            />
+          </div>
+          
+          <button type="submit" className='book-form-submit'>
+            💾 Enregistrer le livre
+          </button>
         </form>
       </div>
     </div>

@@ -25,7 +25,7 @@ Une application web moderne de gestion de bibliothèque personnelle développée
 - **Mode sombre/clair** avec basculement instantané
 - **Design responsive** avec Bootstrap 5
 - **Pagination** pour une navigation facile
-- **Animations** et transitions fluides
+- **Animations** fluides
 
 ### 🔄 Fonctionnalités Avancées
 - **Auto-complétion** avec l'API Google Books lors de l'ajout
@@ -40,7 +40,6 @@ Une application web moderne de gestion de bibliothèque personnelle développée
 - **Vite 7.0.4** - Bundler et serveur de développement
 - **React Router DOM 7.7.0** - Gestion de la navigation
 - **Bootstrap 5.3.7** - Framework CSS
-- **React Transition Group 4.4.5** - Animations
 
 ### Développement
 - **ESLint** - Linting et qualité de code
@@ -173,22 +172,8 @@ L'application est entièrement responsive avec des breakpoints Bootstrap :
 - [ ] Recommandations basées sur les goûts
 - [ ] MoSysteme de livres lus/ non lus
 
-## 🤝 Contribution
 
-1. Fork le projet
-2. Créez votre branche feature (`git checkout -b feature/AmazingFeature`)
-3. Committez vos changements (`git commit -m 'Add some AmazingFeature'`)
-4. Push vers la branche (`git push origin feature/AmazingFeature`)
-5. Ouvrez une Pull Request
-
-## 📄 Licence
-
-Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
 
 ## 👨‍💻 Auteur
 
-**Baptiste** - Développeur passionné de React
-
----
-
-⭐ N'hésitez pas à donner une étoile si ce projet vous plaît !
+**Kacktucz**

@@ -8,7 +8,7 @@
       "date": "1845-08-28",
       "couverture": "Monte_Cristo.webp",
       "resume": "Un classique de la littérature française qui raconte l'histoire d'Edmond Dantès, injustement emprisonné, qui s'échappe et se venge méthodiquement de ceux qui l'ont trahi.",
-      "isFavori": false
+      "isFavori": true
     },
     {
       "id": "2",
@@ -18,7 +18,7 @@
       "date": "1949-06-08",
       "couverture": "https://m.media-amazon.com/images/I/71kxa1-0mfL._AC_UF1000,1000_QL80_.jpg",
       "resume": "Une vision cauchemardesque d'un futur totalitaire où la liberté de pensée est supprimée et où le gouvernement surveille chaque aspect de la vie des citoyens.",
-      "isFavori": true
+      "isFavori": false
     },
     {
       "id": "3",
@@ -57,7 +57,7 @@
       "date": "1997-06-26",
       "resume": "Le premier livre de la série Harry Potter qui suit les aventures d'un jeune sorcier découvrant son héritage magique et entrant à l'école de Poudlard.",
       "couverture": "https://m.media-amazon.com/images/I/71-++hbbERL._AC_UF1000,1000_QL80_.jpg",
-      "isFavori": false
+      "isFavori": true
     },
     {
       "id": "7",

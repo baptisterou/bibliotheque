@@ -96,59 +96,104 @@ function EditBook({books, updateBook}) {
   }
 
   return (
-    <div className='d-flex flex-column col-12 align-items-center'>
-      <div className='col-4 my-5'>
-        {/* Formulaire de modification pré-rempli */}
+    <div className='book-form-container'>
+      <div className='book-form-card'>
+        {/* Formulaire de modification avec design technique */}
         <form onSubmit={handleSubmit}>
-        <h3>Modifier le livre</h3>
-        <div className='d-flex flex-column'>
-          {/* Champs obligatoires marqués avec * */}
-          <label htmlFor="titre">Titre *</label>
-          <input 
-          type="text" className='mb-3' 
-          name='Titre'
-          value={inputTitre}
-          onChange={handleTitre}
-          />
-          <label htmlFor="auteur">Auteur *</label>
-          <input 
-          type="text" className='mb-3' 
-          name='auteur'
-          value={inputAuteur}
-          onChange={handleAuteur}
-          />
-          <label htmlFor="genre">Genre *</label>
-          <input 
-          type="text" className='mb-3' 
-          name='genre'
-          value={inputGenre}
-          onChange={handleGenre}
-          />
-          <label htmlFor="datePublication">Date de publication *</label>
-          <input 
-          type="date" className='mb-3' 
-          name="datePublication" 
-          value={inputDate}
-          onChange={handleDate}
-          />
-          {/* Champ optionnel pour l'image */}
-          <label htmlFor="urlCover">Url de la couverture</label>
-          <input 
-          type="text" className='mb-3' 
-          name="urlCover" 
-          value={inputSrc}
-          onChange={handleSrc}
-          />
-          <label htmlFor="resume">Résumé *</label>
-          <textarea 
-          name="resume" className='mb-3' cols="30" rows="10" 
-          value={inputResume}
-          onChange={handleResume}>
-
-          </textarea>
-          {/* Bouton pour sauvegarder les changements */}
-          <button type="submit" className='btn btn-success mx-5'>Enregistrer les modifications</button>
-        </div>
+          <h2 className='book-form-title'>
+            <span className="code-accent">✏️</span> Modifier le livre
+          </h2>
+          
+          <div className='book-form-group'>
+            <label htmlFor="titre" className='book-form-label'>
+              📖 Titre <span style={{color: 'var(--danger)'}}>*</span>
+            </label>
+            <input 
+              type="text" 
+              className='book-form-input' 
+              name='Titre'
+              value={inputTitre}
+              onChange={handleTitre}
+              placeholder="Saisissez le titre du livre"
+              required
+            />
+          </div>
+          
+          <div className='book-form-group'>
+            <label htmlFor="auteur" className='book-form-label'>
+              ✍️ Auteur <span style={{color: 'var(--danger)'}}>*</span>
+            </label>
+            <input 
+              type="text" 
+              className='book-form-input' 
+              name='auteur'
+              value={inputAuteur}
+              onChange={handleAuteur}
+              placeholder="Nom de l'auteur"
+              required
+            />
+          </div>
+          
+          <div className='book-form-group'>
+            <label htmlFor="genre" className='book-form-label'>
+              🏷️ Genre <span style={{color: 'var(--danger)'}}>*</span>
+            </label>
+            <input 
+              type="text" 
+              className='book-form-input' 
+              name='genre'
+              value={inputGenre}
+              onChange={handleGenre}
+              placeholder="Genre littéraire"
+              required
+            />
+          </div>
+          
+          <div className='book-form-group'>
+            <label htmlFor="datePublication" className='book-form-label'>
+              📅 Date de publication <span style={{color: 'var(--danger)'}}>*</span>
+            </label>
+            <input 
+              type="date" 
+              className='book-form-input' 
+              name="datePublication" 
+              value={inputDate}
+              onChange={handleDate}
+              required
+            />
+          </div>
+          
+          <div className='book-form-group'>
+            <label htmlFor="urlCover" className='book-form-label'>
+              🖼️ URL de la couverture
+            </label>
+            <input 
+              type="url" 
+              className='book-form-input' 
+              name="urlCover" 
+              value={inputSrc}
+              onChange={handleSrc}
+              placeholder="https://exemple.com/couverture.jpg"
+            />
+          </div>
+          
+          <div className='book-form-group'>
+            <label htmlFor="resume" className='book-form-label'>
+              📝 Résumé <span style={{color: 'var(--danger)'}}>*</span>
+            </label>
+            <textarea 
+              name="resume" 
+              className='book-form-textarea' 
+              value={inputResume}
+              onChange={handleResume}
+              placeholder="Décrivez brièvement l'histoire du livre..."
+              required
+            />
+          </div>
+          
+          <button type="submit" className='book-form-submit'>
+            💾 Enregistrer les modifications
+          </button>
         </form>
       </div>
     </div>
