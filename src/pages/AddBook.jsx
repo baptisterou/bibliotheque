@@ -192,7 +192,8 @@ useEffect(() => {
       genre: inputGenre,
       date: inputDate,
       couverture: inputSrc,
-      resume: inputResume
+      resume: inputResume,
+      statutLecture: 'non-lu'
     };
 
     // Appel de la fonction pour ajouter le livre

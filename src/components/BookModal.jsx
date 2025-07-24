@@ -1,6 +1,6 @@
 import React from 'react';
 
-const BookModal = ({ book, isOpen, onClose, onEdit, onDelete, onToggleFavorite }) => {
+const BookModal = ({ book, isOpen, onClose, onEdit, onDelete, onToggleFavorite, onToggleStatutLecture }) => {
   if (!isOpen || !book) return null;
 
   // Debug pour vérifier le statut de favori
@@ -35,6 +35,31 @@ const BookModal = ({ book, isOpen, onClose, onEdit, onDelete, onToggleFavorite }
     }
   };
 
+  // Fonction pour obtenir l'icône et la couleur selon le statut de lecture
+  const getStatutDisplay = (statut) => {
+    switch(statut) {
+      case 'lu':
+        return { icon: '✓', color: '#28a745', text: 'Lu' };
+      case 'en-cours':
+        return { icon: '📖', color: '#ffc107', text: 'En cours' };
+      case 'non-lu':
+      default:
+        return { icon: '📚', color: '#dba0a0ff', text: 'Non lu' };
+    }
+  };
+
+  const statutDisplay = getStatutDisplay(book.statutLecture || 'non-lu');
+
+  const handleStatutLectureClick = () => {
+    console.log('Reading status clicked for book:', book.id);
+    console.log('Current reading status:', book.statutLecture);
+    if (onToggleStatutLecture) {
+      onToggleStatutLecture(book.id);
+    } else {
+      console.error('onToggleStatutLecture function is not provided');
+    }
+  };
+
   return (
     <div className="modal-overlay" onClick={handleOverlayClick}>
       <div className="modal-content">
@@ -47,6 +72,37 @@ const BookModal = ({ book, isOpen, onClose, onEdit, onDelete, onToggleFavorite }
             ✕
           </button>
           
+          {/* Bouton de statut de lecture - à gauche */}
+          <button
+            className="modal-reading-status"
+            onClick={handleStatutLectureClick}
+            title={`Statut: ${statutDisplay.text}`}
+            aria-label={`Changer le statut de lecture: ${statutDisplay.text}`}
+            style={{
+              backgroundColor: statutDisplay.color,
+              color: 'white',
+              position: 'absolute',
+              left: '1rem',
+              top: '1rem',
+              width: '2.5rem',
+              height: '2.5rem',
+              border: 'none',
+              borderRadius: '50%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: '0.9rem',
+              fontWeight: 'bold',
+              cursor: 'pointer',
+              transition: 'all 0.2s ease',
+              zIndex: 10,
+              boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+            }}
+          >
+            {statutDisplay.icon}
+          </button>
+          
+          {/* Bouton favori - à droite */}
           <button
             className={`modal-favorite-star ${isFavorite ? 'active' : ''}`}
             onClick={handleFavoriteClick}

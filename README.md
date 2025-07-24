@@ -15,11 +15,18 @@ Une application web moderne de gestion de bibliothèque personnelle développée
 - **Filtrage par genre** avec options dynamiques
 - **Filtrage par année** de publication
 - **Filtre favoris** pour afficher uniquement les livres préférés
+- **Filtrage par statut de lecture** (non-lu, en cours, lu)
 
 ### ⭐ Système de Favoris
 - **Marquage rapide** des livres favoris d'un simple clic
 - **Mise à jour optimiste** pour une expérience fluide
 - **Persistance** des favoris en base de données
+
+### 📖 Système de Statut de Lecture
+- **Trois états** : Non lu (📚), En cours (📖), Lu (✅)
+- **Basculement cyclique** d'un simple clic
+- **Indicateurs visuels** avec couleurs distinctes
+- **Filtrage** par statut de lecture
 
 ### 🎨 Interface Utilisateur
 - **Mode sombre/clair** avec basculement instantané
@@ -29,9 +36,11 @@ Une application web moderne de gestion de bibliothèque personnelle développée
 
 ### 🔄 Fonctionnalités Avancées
 - **Auto-complétion** avec l'API Google Books lors de l'ajout
-- **Gestion d'erreurs** robuste
+- **Gestion d'erreurs** robuste avec rollback automatique
 - **Sauvegarde automatique** des préférences de thème
 - **Navigation** avec React Router
+- **Tri dynamique** par titre et date de publication
+- **Pagination** intelligente avec navigation fluide
 
 ## 🛠️ Technologies Utilisées
 
@@ -40,13 +49,14 @@ Une application web moderne de gestion de bibliothèque personnelle développée
 - **Vite 7.0.4** - Bundler et serveur de développement
 - **React Router DOM 7.7.0** - Gestion de la navigation
 - **Bootstrap 5.3.7** - Framework CSS
+- **React Transition Group 4.4.5** - Animations et transitions
 
 ### Développement
 - **ESLint** - Linting et qualité de code
 - **Google Fonts** - Typographies (Inter & Playfair Display)
 
 ### APIs
-- **Google Books API** - Suggestions de livres
+- **Google Books API** - Suggestions de livres avec auto-complétion
 - **JSON Server** (recommandé) - Base de données locale
 
 ## 📦 Installation
@@ -100,8 +110,10 @@ npm run lint
 src/
 ├── components/          # Composants réutilisables
 │   ├── BookCard.jsx    # Carte d'affichage d'un livre
-│   ├── FilterBar.jsx   # Barre de filtres
+│   ├── BookModal.jsx   # Modal de détails d'un livre
+│   ├── FilterBar.jsx   # Barre de filtres et recherche
 │   ├── Header.jsx      # En-tête avec navigation
+│   ├── LoadingSpinner.jsx # Indicateur de chargement
 │   └── ThemeToggle.jsx # Bouton de changement de thème
 ├── contexts/           # Contextes React
 │   └── ThemeContext.jsx # Gestion du thème global
@@ -121,6 +133,7 @@ src/
 - Tapez le titre d'un livre pour obtenir des suggestions de l'API Google Books
 - Sélectionnez une suggestion pour remplir automatiquement tous les champs
 - Possibilité d'ajout manuel pour les livres non référencés
+- **Nettoyage intelligent** des descriptions HTML et entités
 
 ### Système de Thème
 - **Mode clair** : Design épuré avec couleurs douces
@@ -132,11 +145,18 @@ src/
 - Les options de filtres s'adaptent dynamiquement aux autres filtres actifs
 - Combinaison possible de tous les filtres simultanément
 - Bouton de réinitialisation pour effacer tous les filtres
+- **Légende visuelle** des statuts de lecture
 
 ### Gestion des Favoris
 - Mise à jour optimiste pour une réactivité immédiate
 - Rollback automatique en cas d'erreur réseau
 - Indicateurs visuels distinctifs
+
+### Système de Statut de Lecture
+- **Trois états disponibles** : Non lu, En cours de lecture, Lu
+- **Cycle automatique** : clic pour passer à l'état suivant
+- **Indicateurs colorés** : rouge pour non-lu, jaune pour en cours, vert pour lu
+- **Persistance** en base de données avec mise à jour optimiste
 
 ## 🔧 Configuration
 
@@ -162,15 +182,73 @@ L'application est entièrement responsive avec des breakpoints Bootstrap :
 - **Gestion des erreurs réseau** avec rollback automatique
 - **États de chargement** pour les opérations asynchrones
 - **Confirmation de suppression** pour éviter les erreurs
+- **Mise à jour optimiste** pour une expérience utilisateur fluide
+
+## ⚡ Optimisations de Performance
+
+- **Composants mémorisés** avec React.memo pour éviter les re-rendus
+- **Callbacks stabilisés** avec useCallback
+- **Filtrage dynamique** des options selon les autres filtres
+- **Pagination intelligente** pour gérer de grandes collections
+- **Debouncing** pour les recherches API
+
+## 🎯 Fonctionnalités de Tri et Navigation
+
+### Tri des Livres
+- **Par titre** : ordre alphabétique croissant/décroissant
+- **Par date** : chronologique (anciens → récents / récents → anciens)
+- **Persistance** du choix de tri lors de la navigation
+
+### Modal de Détails
+- **Affichage complet** des informations du livre
+- **Actions rapides** : modifier, supprimer, favoris, statut
+- **Navigation au clavier** et accessibilité
 
 ## 🔮 Améliorations Futures
 
 - [ ] Système de notes et avis/commentaires de lecture
 - [ ] Recherche avancée avec opérateurs
-- [ ] Export/Import de la bibliothèque
-- [ ] Statistiques de lecture
+- [ ] Export/Import de la bibliothèque (JSON, CSV)
+- [ ] Statistiques de lecture avec graphiques
 - [ ] Recommandations basées sur les goûts
-- [ ] MoSysteme de livres lus/ non lus
+- [ ] Système de catégories personnalisées
+- [ ] Mode hors-ligne avec synchronisation
+- [ ] Partage de bibliothèque entre utilisateurs
+- [ ] Intégration avec d'autres APIs de livres
+- [ ] Système de prêt de livres
+
+## 📊 Structure de Données
+
+### Format d'un Livre
+```json
+{
+  "id": "unique-id",
+  "titre": "Titre du livre",
+  "auteur": "Nom de l'auteur",
+  "genre": "Genre littéraire",
+  "date": "YYYY-MM-DD",
+  "couverture": "URL ou nom de fichier",
+  "resume": "Résumé du livre",
+  "isFavori": false,
+  "statutLecture": "non-lu" // "non-lu" | "en-cours" | "lu"
+}
+```
+
+## 🔧 Configuration Avancée
+
+### Personnalisation du Serveur de Développement
+Le fichier `vite.config.js` ignore les modifications de `db.json` pour éviter les rechargements inutiles :
+
+```javascript
+export default defineConfig({
+  plugins: [react()],
+  server: {
+    watch: {
+      ignored: ['**/db.json']
+    }
+  }
+})
+```
 
 
 

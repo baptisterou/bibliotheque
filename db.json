@@ -8,7 +8,8 @@
       "date": "1845-08-28",
       "couverture": "Monte_Cristo.webp",
       "resume": "Un classique de la littérature française qui raconte l'histoire d'Edmond Dantès, injustement emprisonné, qui s'échappe et se venge méthodiquement de ceux qui l'ont trahi.",
-      "isFavori": false
+      "isFavori": false,
+      "statutLecture": "non-lu"
     },
     {
       "id": "2",
@@ -18,7 +19,8 @@
       "date": "1949-06-08",
       "couverture": "https://m.media-amazon.com/images/I/71kxa1-0mfL._AC_UF1000,1000_QL80_.jpg",
       "resume": "Une vision cauchemardesque d'un futur totalitaire où la liberté de pensée est supprimée et où le gouvernement surveille chaque aspect de la vie des citoyens.",
-      "isFavori": false
+      "isFavori": false,
+      "statutLecture": "non-lu"
     },
     {
       "id": "3",
@@ -28,7 +30,8 @@
       "date": "1954-07-29",
       "couverture": "https://m.media-amazon.com/images/I/71ZLavBjpRL._AC_UF1000,1000_QL80_.jpg",
       "resume": "Une épopée fantastique qui suit la quête d'un groupe pour détruire un anneau de pouvoir maléfique et sauver la Terre du Milieu des ténèbres.",
-      "isFavori": false
+      "isFavori": false,
+      "statutLecture": "non-lu"
     },
     {
       "id": "4",
@@ -38,7 +41,8 @@
       "date": "1813-01-28",
       "resume": "Une histoire d'amour et de malentendus entre Elizabeth Bennet, une jeune femme intelligente et indépendante, et Mr. Darcy, un riche aristocrate.",
       "couverture": "https://m.media-amazon.com/images/I/71Q1tPupKjL._AC_UF1000,1000_QL80_.jpg",
-      "isFavori": false
+      "isFavori": false,
+      "statutLecture": "non-lu"
     },
     {
       "id": "5",
@@ -47,7 +51,8 @@
       "genre": "Conte philosophique",
       "date": "1943-04-06",
       "resume": "Un conte poétique et philosophique qui suit les rencontres d'un jeune prince venu d'une autre planète avec un aviateur échoué dans le désert.",
-      "couverture": "Le_Petit_Prince.webp"
+      "couverture": "Le_Petit_Prince.webp",
+      "statutLecture": "non-lu"
     },
     {
       "id": "6",
@@ -57,7 +62,8 @@
       "date": "1997-06-26",
       "resume": "Le premier livre de la série Harry Potter qui suit les aventures d'un jeune sorcier découvrant son héritage magique et entrant à l'école de Poudlard.",
       "couverture": "https://m.media-amazon.com/images/I/71-++hbbERL._AC_UF1000,1000_QL80_.jpg",
-      "isFavori": false
+      "isFavori": false,
+      "statutLecture": "non-lu"
     },
     {
       "id": "7",
@@ -66,7 +72,8 @@
       "genre": "Roman",
       "date": "1952-09-01",
       "couverture": "Le_Vieil_Homme_et_la_Mer.webp",
-      "resume": "L'histoire d'un vieux pêcheur cubain et de sa lutte épique avec un énorme espadon dans les eaux du Gulf Stream."
+      "resume": "L'histoire d'un vieux pêcheur cubain et de sa lutte épique avec un énorme espadon dans les eaux du Gulf Stream.",
+      "statutLecture": "non-lu"
     },
     {
       "id": "8",
@@ -75,7 +82,8 @@
       "genre": "Roman psychologique",
       "date": "1866-01-01",
       "resume": "Un roman profond qui explore la psychologie d'un jeune homme qui commet un meurtre et doit faire face à la culpabilité qui en découle.",
-      "couverture": "Crime_et_Châtiment.webp"
+      "couverture": "Crime_et_Châtiment.webp",
+      "statutLecture": "non-lu"
     },
     {
       "id": "9",
@@ -85,7 +93,8 @@
       "date": "1942-05-19",
       "resume": "Un roman existentialiste qui suit Meursault, un homme indifférent qui commet un crime apparemment sans motif et fait face à l'absurdité de l'existence.",
       "couverture": "L'Etranger.webp",
-      "isFavori": false
+      "isFavori": false,
+      "statutLecture": "non-lu"
     },
     {
       "id": "10",
@@ -95,7 +104,8 @@
       "date": "1967-05-30",
       "resume": "L'histoire de la famille Buendía sur plusieurs générations dans le village imaginaire de Macondo, mêlant réalisme et éléments magiques.",
       "couverture": "https://m.media-amazon.com/images/I/81MI6+TpYkL._AC_UF1000,1000_QL80_.jpg",
-      "isFavori": true
+      "isFavori": true,
+      "statutLecture": "en-cours"
     },
     {
       "id": "11",
@@ -105,7 +115,8 @@
       "date": "1862-01-01",
       "couverture": "Les_Misérables.webp",
       "resume": "Une vaste fresque sociale qui suit plusieurs personnages dans la France du XIXe siècle, notamment l'ancien forçat Jean Valjean.",
-      "isFavori": true
+      "isFavori": true,
+      "statutLecture": "non-lu"
     },
     {
       "id": "12",
@@ -114,7 +125,8 @@
       "genre": "Roman",
       "date": "1932-01-01",
       "resume": "Un roman sombre et cynique qui suit les errances de Ferdinand Bardamu à travers différents pays et situations.",
-      "couverture": "Voyage_au_bout_de_la_nuit.jpg"
+      "couverture": "Voyage_au_bout_de_la_nuit.jpg",
+      "statutLecture": "non-lu"
     },
     {
       "id": "582a",
@@ -123,7 +135,8 @@
       "genre": "Juvenile Fiction",
       "date": "2020-01-15",
       "couverture": "http://books.google.com/books/content?id=RGzDDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
-      "resume": "« Ce serait donc cela mon véritable premier baiser avec un garçon ? Un mensonge, une vengeance et une trahison ? J ’avais rêvé mieux. N’importe quelle fille normale aurait rêvé mieux. » Tout commence par un baiser. Mais ce baiser va faire de la vie de Marion un enfer. Peu à peu, la honte laisse toute la place à la rage, et Marion prépare sa vengeance. Sans réfléchir aux conséquences de ses actes..."
+      "resume": "« Ce serait donc cela mon véritable premier baiser avec un garçon ? Un mensonge, une vengeance et une trahison ? J ’avais rêvé mieux. N’importe quelle fille normale aurait rêvé mieux. » Tout commence par un baiser. Mais ce baiser va faire de la vie de Marion un enfer. Peu à peu, la honte laisse toute la place à la rage, et Marion prépare sa vengeance. Sans réfléchir aux conséquences de ses actes...",
+      "statutLecture": "non-lu"
     },
     {
       "id": "dcf3",
@@ -133,7 +146,8 @@
       "date": "2000-01-01",
       "couverture": "http://books.google.com/books/content?id=BNb-gy61vb8C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
       "resume": "Pièce de théâtre pour 28 * personnages (20h-8f) pouvant être joués par 10 personnages (6h-4f).",
-      "isFavori": true
+      "isFavori": true,
+      "statutLecture": "non-lu"
     },
     {
       "id": "b930",
@@ -143,7 +157,8 @@
       "date": "2024-05-09",
       "couverture": "http://books.google.com/books/content?id=0ugGEQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
       "resume": "Embarquez pour un voyage épique à travers les continents avec \"Le Tour du Monde en Quatre-Vingts Jours\" de Jules Verne, un classique de l'aventure où l'intrigue palpitante, l'ingéniosité et l'exotisme se rencontrent dans un récit captivant et exaltant. Préparez-vous à être emporté dans une course contre la montre haletante, pleine de rebondissements et de découvertes fascinantes.Suivez les exploits de Phileas Fogg, un gentleman anglais impassible et méthodique, et de son fidèle serviteur, Passepartout, alors qu'ils se lancent dans un défi audacieux : faire le tour du monde en quatre-vingts jours seulement. De Londres à l'Inde, en passant par les États-Unis, les aventuriers affrontent des obstacles imprévus, des adversaires redoutables et des péripéties rocambolesques.Jules Verne tisse une toile d'aventure captivante, où l'imagination se mêle à la réalité pour créer un monde d'émerveillement et de suspense. À travers les descriptions vivantes des paysages exotiques, des moyens de transport innovants et des rencontres inattendues, l'auteur invite les lecteurs à un voyage inoubliable à travers les merveilles de notre planète.\"Le Tour du Monde en Quatre-Vingts Jours\" n'est pas seulement un récit d'aventure, c'est aussi une réflexion sur le courage, la persévérance et la capacité de l'homme à surmonter les obstacles. Les personnages attachants et les rebondissements haletants captivent les lecteurs de tous âges, les transportant dans un tourbillon d'action et d'émerveillement.Critiquement acclamé depuis sa publication, \"Le Tour du Monde en Quatre-Vingts Jours\" continue de fasciner et d'inspirer les lecteurs du monde entier. Son exploration des merveilles du monde et des défis de l'aventure en fait un classique intemporel de la littérature d'aventure, dont le charme et l'ingéniosité continuent de captiver les imaginations.Ne manquez pas cette occasion de vous embarquer dans le voyage exaltant de \"Le Tour du Monde en Quatre-Vingts Jours\". Laissez-vous emporter par l'excitation de l'aventure, la richesse des découvertes et la magie de l'imagination, dans un tour du monde épique qui vous transportera aux quatre coins de la planète. Obtenez votre exemplaire dès maintenant et rejoignez les millions de lecteurs qui ont été captivés par ce chef-d'œuvre intemporel de Jules Verne.",
-      "isFavori": true
+      "isFavori": true,
+      "statutLecture": "non-lu"
     },
     {
       "id": "a43d",
@@ -152,7 +167,8 @@
       "genre": "Fiction",
       "date": "2025-02-07",
       "couverture": "http://books.google.com/books/content?id=oxxEEQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
-      "resume": "\"La poubelle des vanités\" offre un portrait mordant d’un univers où le tri sélectif moral n’a pas encore fait son apparition. Cupides et véreux s’y côtoient, chacun manipulant ou exploitant les ambitions des autres pour atteindre leurs propres objectifs. Dans cette galerie de personnages détestables, mais étrangement familiers, une course effrénée s’engage, rythmée par des intrigues et des manœuvres douteuses. À l’issue de cette compétition sans scrupules, une question demeure : peut-il vraiment y avoir un vainqueur ? À PROPOS DE L'AUTEUR En mars 2020, en raison de la pandémie, tout s’est figé. Corentin Vialle, habitué à écouter les bruissements de la plaine, remarqua pour la première fois le silence de l’autoroute, comme lors des rares matins enneigés. C’était l’instant. Écrire devenait une nécessité, un refuge face à la torpeur ambiante et aux décomptes incessants des chaînes d’information. En jetant un regard à sa bibliothèque, il croisa les yeux de Delacourt, Sattouf, Balzac, Lemaitre et Proust, ces provocateurs bienveillants qui semblaient le défier : « T’es pas cap. » Il leur répondit : « OK, mais pas de moqueries sur le résultat. » Mal lui en prit, ces génies rient de tout."
+      "resume": "\"La poubelle des vanités\" offre un portrait mordant d’un univers où le tri sélectif moral n’a pas encore fait son apparition. Cupides et véreux s’y côtoient, chacun manipulant ou exploitant les ambitions des autres pour atteindre leurs propres objectifs. Dans cette galerie de personnages détestables, mais étrangement familiers, une course effrénée s’engage, rythmée par des intrigues et des manœuvres douteuses. À l’issue de cette compétition sans scrupules, une question demeure : peut-il vraiment y avoir un vainqueur ? À PROPOS DE L'AUTEUR En mars 2020, en raison de la pandémie, tout s’est figé. Corentin Vialle, habitué à écouter les bruissements de la plaine, remarqua pour la première fois le silence de l’autoroute, comme lors des rares matins enneigés. C’était l’instant. Écrire devenait une nécessité, un refuge face à la torpeur ambiante et aux décomptes incessants des chaînes d’information. En jetant un regard à sa bibliothèque, il croisa les yeux de Delacourt, Sattouf, Balzac, Lemaitre et Proust, ces provocateurs bienveillants qui semblaient le défier : « T’es pas cap. » Il leur répondit : « OK, mais pas de moqueries sur le résultat. » Mal lui en prit, ces génies rient de tout.",
+      "statutLecture": "non-lu"
     },
     {
       "id": "4db8",
@@ -161,7 +177,28 @@
       "genre": "Social Science",
       "date": "2013-11-15",
       "couverture": "http://books.google.com/books/content?id=OuhlDwAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
-      "resume": "Charles Duchaussois relate son parcours jalonné d'aventures pour arriver à Katmandou, le haut lieu de la drogue et des hippies : associé à des trafiquants d'armes à Beyrouth, récoltant du hachish dans les montagnes libanaises, dirigeant un night-club à Koweit, médecin et chirurgien au Népal..."
+      "resume": "Charles Duchaussois relate son parcours jalonné d'aventures pour arriver à Katmandou, le haut lieu de la drogue et des hippies : associé à des trafiquants d'armes à Beyrouth, récoltant du hachish dans les montagnes libanaises, dirigeant un night-club à Koweit, médecin et chirurgien au Népal...",
+      "statutLecture": "non-lu"
+    },
+    {
+      "id": "69d5",
+      "titre": "React.js : [le framework JavaScript de Facebook]",
+      "auteur": "Éric Sarrion",
+      "genre": "Computers",
+      "date": "2019-01-01",
+      "couverture": "http://books.google.com/books/content?id=zgyQDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "resume": "La 4e de couv. indique : \"Un ouvrage de référence pour les développeurs web. En tant que développeur, qui n'a pas encore entendu parler de React.js (ou React de façon raccourcie) ? Cette bibliothèque JavaScript, initialement écrite pour Facebook (en 2013), s'utilise maintenant couramment dans le monde de l'entreprise. Elle permet de structurer efficacement une application web, mais peut également s'utiliser dans une version dite native, pour écrire des applications mobiles à destination des iPhone ou Android. Cet ouvrage vous permettra entre autres de créer des applications web autonomes, mais également de les interfacer avec un serveur en utilisant Ajax. Et surtout, vous comprendrez comment augmenter la complexité de votre application tout en conservant un code bien structuré, ceci grâce à React mais aussi Redux, étudié dans les derniers chapitres de l'ouvrage. Agrémenté de nombreuses illustrations et cas pratiques, cet ouvrage vous accompagne de façon progressive dans la découverte des concepts et propriétés associés à ce nouveau framework.\"",
+      "statutLecture": "non-lu"
+    },
+    {
+      "id": "9b23",
+      "titre": "Node.js",
+      "auteur": "Thomas Parisot",
+      "genre": "Educatif",
+      "date": "2018-01-01",
+      "couverture": "http://books.google.com/books/content?id=pKd9DwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "resume": "apprendre par la pratique",
+      "statutLecture": "non-lu"
     }
   ]
 }

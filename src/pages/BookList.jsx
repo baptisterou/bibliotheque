@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import BookCard from '../components/BookCard'
 import BookModal from '../components/BookModal'
 
-function BookList({books, genre, year, input, isFavoriFilter, deleteEntry, toggleFavori}) {
+function BookList({books, genre, year, input, isFavoriFilter, statutLectureFilter, deleteEntry, toggleFavori, toggleStatutLecture}) {
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedBook, setSelectedBook] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -12,7 +12,7 @@ function BookList({books, genre, year, input, isFavoriFilter, deleteEntry, toggl
   const navigate = useNavigate();
   const booksPerPage = 8;
   
-  const prevFilters = useRef({ genre, year, input, isFavoriFilter });
+  const prevFilters = useRef({ genre, year, input, isFavoriFilter, statutLectureFilter });
   // Fonctions pour gérer le modal
   const handleBookClick = (book) => {
     setSelectedBook(book);
@@ -61,9 +61,10 @@ function BookList({books, genre, year, input, isFavoriFilter, deleteEntry, toggl
       book.auteur.toLowerCase().includes(input.toLowerCase())
     ) : filteredYear;
     const filteredFavori = isFavoriFilter ? filteredInput.filter(book => book.isFavori === true) : filteredInput;
+    const filteredStatutLecture = statutLectureFilter ? filteredFavori.filter(book => book.statutLecture === statutLectureFilter) : filteredFavori;
     
     // Application du tri
-    const sortedBooks = sortBooks(filteredFavori, sortOption);
+    const sortedBooks = sortBooks(filteredStatutLecture, sortOption);
 
     const totalBooks = sortedBooks.length;
     const totalPages = Math.ceil(totalBooks / booksPerPage);
@@ -72,7 +73,7 @@ function BookList({books, genre, year, input, isFavoriFilter, deleteEntry, toggl
     const currentBooks = sortedBooks.slice(indexOfFirstBook, indexOfLastBook);
     
     return { totalBooks, totalPages, currentBooks, indexOfFirstBook, indexOfLastBook };
-  }, [books, genre, year, input, isFavoriFilter, currentPage, booksPerPage, sortOption]);
+  }, [books, genre, year, input, isFavoriFilter, statutLectureFilter, currentPage, booksPerPage, sortOption]);
 
 
   const nextPage = () => {
@@ -93,7 +94,7 @@ function BookList({books, genre, year, input, isFavoriFilter, deleteEntry, toggl
 
 
   useEffect(() => {
-    const currentFilters = { genre, year, input, isFavoriFilter };
+    const currentFilters = { genre, year, input, isFavoriFilter, statutLectureFilter };
     const hasFilterChanged = Object.keys(currentFilters).some(
       key => currentFilters[key] !== prevFilters.current[key]
     );
@@ -102,7 +103,7 @@ function BookList({books, genre, year, input, isFavoriFilter, deleteEntry, toggl
       setCurrentPage(1);
       prevFilters.current = currentFilters;
     }
-  }, [genre, year, input, isFavoriFilter]);
+  }, [genre, year, input, isFavoriFilter, statutLectureFilter]);
 
 
   useEffect(() => {
@@ -111,7 +112,7 @@ function BookList({books, genre, year, input, isFavoriFilter, deleteEntry, toggl
     }
   }, [currentPage, totalPages]);
   return (
-    <div className="container mt-8">
+    <div className="container mt-6">
       {/* Message si aucun livre */}
       {currentBooks.length === 0 ? (
         <div className="empty-state">
@@ -125,8 +126,17 @@ function BookList({books, genre, year, input, isFavoriFilter, deleteEntry, toggl
         </div>
       ) : (
         <>
+        
           {/* Barre de tri */}
-          <div className="sort-container mt-5">
+          <div className="sort-container mt-4">
+                    {/* Légende des statuts de lecture */}
+        <div className='filter-group'>
+          <div className="status-legend">
+            <span className="legend-item">📚 Non lu</span>
+            <span className="legend-item">📖 En cours</span>
+            <span className="legend-item">✅ Lu</span>
+          </div>
+        </div>
             <div className="sort-wrapper">
               <label htmlFor="sort-select" className="sort-label">
                  Trier par :
@@ -158,8 +168,10 @@ function BookList({books, genre, year, input, isFavoriFilter, deleteEntry, toggl
                 date={book.date} 
                 resume={book.resume} 
                 isFavori={book.isFavori || false}
+                statutLecture={book.statutLecture || 'non-lu'}
                 deleteEntry={deleteEntry} 
                 toggleFavori={toggleFavori}
+                toggleStatutLecture={toggleStatutLecture}
                 onClick={handleBookClick}
               />
             )}
@@ -213,6 +225,7 @@ function BookList({books, genre, year, input, isFavoriFilter, deleteEntry, toggl
         onEdit={handleEditBook}
         onDelete={deleteEntry}
         onToggleFavorite={toggleFavori}
+        onToggleStatutLecture={toggleStatutLecture}
       />
     </div>
   )

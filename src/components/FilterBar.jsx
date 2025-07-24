@@ -2,7 +2,7 @@
 import React from 'react'
 
 // Composant barre de filtres pour rechercher et filtrer les livres
-function FilterBar({books, onGenreChange, onYearChange, onInputChange, onFavoriFilterChange, genre, year, input, isFavoriFilter}) {
+function FilterBar({books, onGenreChange, onYearChange, onInputChange, onFavoriFilterChange, onStatutLectureChange, genre, year, input, isFavoriFilter, statutLectureFilter}) {
   
   // Filtrage des livres pour avoir les genres disponibles selon les autres filtres
   let filteredBooksForGenres = books;
@@ -61,12 +61,17 @@ function FilterBar({books, onGenreChange, onYearChange, onInputChange, onFavoriF
     onFavoriFilterChange(e.target.checked);
   }
 
+  function handleStatutLectureChange(e){
+    onStatutLectureChange(e.target.value);
+  }
+
   // Fonction pour tout remettre à zéro
   function resetFilters(){
     onGenreChange('');
     onYearChange('');
     onInputChange('');
     onFavoriFilterChange(false);
+    onStatutLectureChange('');
   }
   
   return (
@@ -116,6 +121,20 @@ function FilterBar({books, onGenreChange, onYearChange, onInputChange, onFavoriF
           </select>
         </div>
         
+        {/* Sélecteur de statut de lecture */}
+        <div className='filter-group'>
+          <label className='filter-label' htmlFor="statutLecture">
+            <span className="filter-icon">📖</span>
+            Statut de lecture
+          </label>
+          <select name="statutLecture" value={statutLectureFilter} onChange={handleStatutLectureChange} className="filter-select">
+            <option value="">Tous les statuts</option>
+            <option value="non-lu">Non lu</option>
+            <option value="en-cours">En cours</option>
+            <option value="lu">Lu</option>
+          </select>
+        </div>
+        
         {/* Checkbox pour les favoris uniquement */}
         <div className='filter-group filter-checkbox'>
           <label className='filter-label' htmlFor="favoris">
@@ -136,6 +155,7 @@ function FilterBar({books, onGenreChange, onYearChange, onInputChange, onFavoriF
             </label>
           </div>
         </div>
+        
         
         {/* Bouton pour tout remettre à zéro */}
         <div className='filter-group filter-reset'>

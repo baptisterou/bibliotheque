@@ -21,6 +21,7 @@ function App() {
   const[year, setSelectedYear] = useState('');
   const[input, setInput] = useState('')
   const[isFavoriFilter, setIsFavoriFilter] = useState(false)
+  const[statutLectureFilter, setStatutLectureFilter] = useState('')
 
   // Fonctions callback pour éviter les re-rendus inutiles
   const onGenreChange = useCallback((genreCB) => {
@@ -37,6 +38,10 @@ function App() {
 
   const onFavoriFilterChange = useCallback((favoriCB) => {
     setIsFavoriFilter(favoriCB)
+  }, []);
+
+  const onStatutLectureChange = useCallback((statutLectureCB) => {
+    setStatutLectureFilter(statutLectureCB)
   }, []);
 
   // Fonction pour basculer les favoris avec mise à jour optimiste
@@ -69,6 +74,54 @@ function App() {
       return prevBooks.map(book => 
         book.id === idBook ? { ...book, isFavori: !book.isFavori } : book
       );
+    });
+  }, []);
+
+  // Fonction pour changer le statut de lecture
+  const toggleStatutLecture = useCallback((idBook) => {
+    setBooks(prevBooks => {
+      const bookToUpdate = prevBooks.find(book => book.id === idBook);
+      if (bookToUpdate) {
+        // Cycle entre les statuts : non-lu -> en-cours -> lu -> non-lu
+        let newStatut;
+        switch(bookToUpdate.statutLecture) {
+          case 'non-lu':
+            newStatut = 'en-cours';
+            break;
+          case 'en-cours':
+            newStatut = 'lu';
+            break;
+          case 'lu':
+          default:
+            newStatut = 'non-lu';
+            break;
+        }
+        
+        const updatedBook = { ...bookToUpdate, statutLecture: newStatut };
+        
+        // Mise à jour en arrière-plan sur le serveur
+        fetch(`http://localhost:3001/books/${idBook}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(updatedBook)
+        })
+        .catch(error => {
+          console.error('Erreur lors de la mise à jour du statut de lecture:', error);
+          // En cas d'erreur, annuler la mise à jour optimiste
+          setBooks(prevBooksRollback => 
+            prevBooksRollback.map(book => 
+              book.id === idBook ? { ...book, statutLecture: bookToUpdate.statutLecture } : book
+            )
+          );
+        });
+        
+        return prevBooks.map(book => 
+          book.id === idBook ? { ...book, statutLecture: newStatut } : book
+        );
+      }
+      return prevBooks;
     });
   }, []);
 
@@ -135,10 +188,10 @@ function App() {
   return (
     <div className={isDarkMode ? 'dark-theme' : 'light-theme'} style={{minHeight: '100vh'}}>
       {/* Header avec navigation et filtres */}
-      <Header className='mt-0 ' books={books} onGenreChange={onGenreChange} onYearChange={onYearChange} onInputChange={onInputChange} onFavoriFilterChange={onFavoriFilterChange} genre={genre} year={year} input={input} isFavoriFilter={isFavoriFilter}></Header>
+      <Header className='mt-0 ' books={books} onGenreChange={onGenreChange} onYearChange={onYearChange} onInputChange={onInputChange} onFavoriFilterChange={onFavoriFilterChange} onStatutLectureChange={onStatutLectureChange} genre={genre} year={year} input={input} isFavoriFilter={isFavoriFilter} statutLectureFilter={statutLectureFilter}></Header>
       {/* Routes pour naviguer entre les pages */}
       <Routes>
-        <Route className='' path='/' element={<BookList  books={books} genre={genre} year={year} input={input} isFavoriFilter={isFavoriFilter} deleteEntry={deleteEntry} toggleFavori={toggleFavori}/>}/>
+        <Route className='' path='/' element={<BookList  books={books} genre={genre} year={year} input={input} isFavoriFilter={isFavoriFilter} statutLectureFilter={statutLectureFilter} deleteEntry={deleteEntry} toggleFavori={toggleFavori} toggleStatutLecture={toggleStatutLecture}/>}/>
         <Route className='' path='/addBook' element={<AddBook newBook={newBook}/>}/>
         <Route className='' path='/edit/:id' element={<EditBook books={books} updateBook={updateBook}/>}/>
       </Routes>

@@ -12,8 +12,10 @@ const BookCard = memo(function BookCard({
   src, 
   id, 
   isFavori, 
+  statutLecture,
   deleteEntry, 
   toggleFavori,
+  toggleStatutLecture,
   onClick
 }) {
 
@@ -30,9 +32,31 @@ const BookCard = memo(function BookCard({
     toggleFavori(id);
   }
 
+  // Fonction pour changer le statut de lecture
+  function handleStatutLecture(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    toggleStatutLecture(id);
+  }
+
+  // Fonction pour obtenir l'icône et la couleur selon le statut de lecture
+  function getStatutDisplay(statut) {
+    switch(statut) {
+      case 'lu':
+        return { icon: '✓', color: '#28a745', text: 'Lu' };
+      case 'en-cours':
+        return { icon: '📖', color: '#ffc107', text: 'En cours' };
+      case 'non-lu':
+      default:
+        return { icon: '📚', color: '#ffccccff', text: 'Non lu' };
+    }
+  }
+
+  const statutDisplay = getStatutDisplay(statutLecture);
+
   // Fonction pour gérer le clic sur la carte
   function handleCardClick() {
-    onClick?.({ id, titre, auteur, genre, date, resume, couverture: src, isFavori });
+    onClick?.({ id, titre, auteur, genre, date, resume, couverture: src, isFavori, statutLecture });
   }
 
   // Fonction pour mettre la date au bon format français
@@ -48,7 +72,35 @@ const BookCard = memo(function BookCard({
   return (
     <div className='col-12 col-md-6 col-lg-4 col-xl-3 d-flex flex-column'>
       <div className="book-card slide-up" onClick={handleCardClick}>
-        {/* Bouton favori */}
+        {/* Bouton de statut de lecture - en haut à gauche */}
+        <button 
+          className="reading-status-btn"
+          onClick={handleStatutLecture}
+          title={`Statut: ${statutDisplay.text}`}
+          style={{ 
+            backgroundColor: statutDisplay.color,
+            position: 'absolute',
+            top: '14px',
+            left: '6px',
+            border: 'none',
+            borderRadius: '50%',
+            width: '45px',
+            height: '45px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            color: 'white',
+            fontSize: '14px',
+            fontWeight: 'bold',
+            cursor: 'pointer',
+            zIndex: 10,
+            transition: 'all 0.2s ease'
+          }}
+        >
+          {statutDisplay.icon}
+        </button>
+
+        {/* Bouton favori - en haut à droite */}
         <button 
           className={`favorite-btn ${isFavori ? 'active' : ''}`}
           onClick={handleFavori}
